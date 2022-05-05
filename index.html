@@ -8,16 +8,71 @@
     <title>ADSE3200 Eksamen</title>
 </head>
 <body>
-    <div id="timelineFullWrapper">
-        <div id="header">Boligprisvekst Oslo 2010-2020</div>
+    <!-- Vis 1: Timeline starts here -->
+    <div id="timelineFullWrapper"> 
+        <div id="timelineHeader">Boligprisvekst Oslo 2010-2020</div>
         <div id="timelineTopWrapper">
             <span id="selectedYear"></span>
         </div>
         <div id="timelineMiddleWrapper"><span id="price">[Image]</span><span id="sqm">[Image]</span><span id="third">[Image]</span></div>
         <div id="timelineBottomWrapper">
             <div id="timeline"></div>
+            <div id="timelineOutro">Normal låneindeks nå og da. (fadein) i x var låneindeksen y. Fortsetter veksten er 2030 z. </div>
+            <div class="next" onclick="goTo('p2h')">^^</div>
         </div>
     </div>
+
+    <hr> <!-- Vis 2: Person-2-house starts here -->
+
+    <div id="p2hFullWrapper">
+        <div id="p2hHeader">Placeholder (right)</div><br><br><br>
+        <div id="p2hTopWrapper">Forhold menneske-bolig</div>
+        <div id="p2hMiddleWrapper"> Graphic: relative årslønn versus boliglån over ti år rep by rel size person/hus... Frown?
+            <br><br>[G R A P H I C]
+        </div>
+        <div id="p2hBottomWrapper">Normal låneindeks nå og da. (fadein) i x var låneindeksen y.</div>
+        <div class="next" onclick="goTo('race')">^^</div>
+    </div>
+
+    <hr> <!-- Vis 3: Race starts here -->
+    
+    <div id="raceFullWrapper">
+        <div id="raceHeader">Placeholder (middle)</div>
+        <div id="raceTopWrapper">How bad really is Oslo?</div>
+        <div id="raceMiddleWrapper">[Racing bar chart d3.js]</div>
+        <div id="raceBottomWrapper">https://observablehq.com/@d3/bar-chart-race</div>
+        <div class="next" onclick="goTo('nurse')">^^</div>
+
+    </div>
+    
+    <hr> <!-- Vis 4: Nurse starts here -->
+    
+    <div id="nurseFullWrapper">
+        <div id="nurseHeader">A city for</div>
+        <div id="nurseTopWrapper">(Fadein) Sykepleierindeksen forteller oss...</div>
+        <div id="nurseMiddleWrapper">
+            <span>(Fadein) Graphic: i 19xx kunne en sykepleier kjøpe x% av boligene i Oslo + [pie chart] + [nurse pic]</span>
+            <span>Hva tror du indeksen er på i 2022?<input type="number" id="nurseInput">% </span>
+            <span>(Fadein after input) den er bare y% - du bomma med z prosentpoeng + [pie chart] + [nurse pic] </span>
+        </div>
+        <div id="nurseBottomWrapper">
+            <p>I xxxx forventes Oslo å mangle yyyy sykepleiere...</p>
+        </div>
+        <div class="next" onclick="goTo('finale')">^^</div>
+    </div>
+
+    <hr> <!-- Vis 5: Finale starts here -->
+
+    <div id="finaleFullWrapper">
+        <div id="finaleHeader">Prob superflous</div>
+        <div id="finaleTopWrapper">Summary: falls from top, smash down.</div>
+        <div id="finaleMiddleWrapper">
+            Boligere blitt x% dyrere. Lån y% dyrere. Dyktige fagpersoner har råd til bare z%.
+            Mb bankene har tjent y. Flere leier?
+        </div>
+        <div id="finaleBottomWrapper">Big: Er det dette vi vil?</div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
