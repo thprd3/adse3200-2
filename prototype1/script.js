@@ -3,7 +3,7 @@
 // generere by name, adde listeners by name
 
 const selectedYearEl = document.getElementById("selectedYear");
-const timelineEl = document.getElementById("timelineVis");
+const timelineEl = document.getElementById("timeline");
 
 class yearObj {
     constructor(name, avgPrice, sqmPrice, percentAvg, percentSqm) {
@@ -37,7 +37,6 @@ function constructSpans() {
         timelineEl.innerHTML+="<span id='"+yearArray[i].name+"'class='yearSpan'>"+yearArray[i].name+"</span>";
     }
 }
-
 constructSpans();
 
 function constructListeners(){
@@ -45,7 +44,6 @@ function constructListeners(){
         document.getElementById(yearArray[i].name).addEventListener("click", function(){ selectYear(yearArray[i])})
     }
 }
-
 constructListeners();
 
 function selectYear(yo){
