@@ -8,7 +8,7 @@
     text-align: center;
 }
 
-/* general */
+/* ------------------- general -------------------- */
 .prime {
     width: 100%;
     height:310vh;
@@ -59,6 +59,9 @@
     top: 10;
     padding-top: 5vh;
 }
+.prev i {
+    transform: rotateY(180deg);
+}
 
 .title {
     padding-top: 5vh;
@@ -102,12 +105,34 @@
 }
 
 /* nurse */
-#nurseVis {
+
+#nurse {
+    border: 2px solid blue;
+}
+#nurseWrapper {
+    display: flex;
+    width:100%;
+    height: 70%;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    border: 2px solid red;
+}
+
+#nurseWrapper div {
+    width: 50%;
+    margin: 10px;
     font-size: 1.25rem;
     line-height: 125%;
 }
+#nurseOutput {
+    min-height:10%;
+}
+#nurseVis {
+}
+#nurseVis2 {
+}
 #nurseVis button{
-    display: inline;
     margin:30px;
     margin-left:0px;
 }

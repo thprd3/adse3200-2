@@ -1,7 +1,5 @@
 /* ----------- Vis 1: Timeline ------------- */
 
-// generere by name, adde listeners by name
-
 const selectedYearEl = document.getElementById("selectedYear");
 const timelineEl = document.getElementById("timelineVis");
 
@@ -53,3 +51,16 @@ function selectYear(yo){
 }
 
 selectYear(y2010);
+
+/* ---------- nurse ------- */
+let nurseInputEl = document.getElementById("nurseInput");
+let nurseOutputEl = document.getElementById("nurseOutput");
+const n2020 = 10;
+
+function nurseGuess () {
+    let guess = nurseInputEl.value;
+    let diff = n2020 - guess;
+    let outputString = "I 2020 kunne sykepleiere kjøpe " +n2020+ "% av alle boliger i Oslo."
+    +"<p> Du var " + diff + " prosentpoeng unna.</p>";
+    nurseOutputEl.innerHTML = outputString;
+}
