@@ -55,12 +55,76 @@ selectYear(y2010);
 /* ---------- nurse ------- */
 let nurseInputEl = document.getElementById("nurseInput");
 let nurseOutputEl = document.getElementById("nurseOutput");
-const n2020 = 10;
+let div = document.getElementById("nurseVis2");
+
+const n2020 = 1.3;
 
 function nurseGuess () {
-    let guess = nurseInputEl.value;
-    let diff = n2020 - guess;
-    let outputString = "I 2020 kunne sykepleiere kjøpe " +n2020+ "% av alle boliger i Oslo."
-    +"<p> Du var " + diff + " prosentpoeng unna.</p>";
+    let guess = nurseInputEl.value; //math floor, parse
+    // if < / > / =
+    let outputString = "<p>Du gjettet "+ guess + "%.";
     nurseOutputEl.innerHTML = outputString;
+    generateGrid(guess);
+}
+
+function generateGrid(guess) {
+    // create div nurseVis2, append to nurseWrapper 
+    let output = "<table><tr>";
+    let trCount = 0;
+    let max = 100;
+    let remainder = max - guess;
+    let male = false;
+    
+    let nursehouseStringMale = "<td><img src = 'nursehouseM.png' alt = 'nurseHouseM'></td>";
+    let nursehouseStringFemale = "<td><img src = 'nursehouseF.png' alt = 'nurseHouseF'></td>";
+    let houseString = "<td><img src = 'house.png' alt = 'house'></td>";
+
+    for (let i = 0; i < guess; i++) {
+        if (male === true) {
+            output+= nursehouseStringMale;
+            male = false;
+            trCount++;
+        }
+        else {
+            output+= nursehouseStringFemale;
+            male = true;
+            trCount++;
+        }
+        if (trCount == 10){
+            output+= "</tr><tr>"
+            trCount = 0;
+        }
+    }
+
+    for (let i = 0; i < remainder; i++){
+        output+= houseString;
+        trCount ++; 
+        if (trCount == 10){
+            output+= "</tr><tr>"
+            trCount = 0;
+            console.log("trCount is reset, is now " + trCount)
+        }
+    }
+
+    output+= "</table>";
+
+    div.innerHTML = output;
+
+    div.innerHTML += "<button onclick='nurseTruth()'>Se svaret</button>";
+
+    document.getElementById("nurseVis").remove();
+
+
+
+    // append button click to continue
+}
+
+function nurseTruth () {
+    //on click to continue
+    let guess = nurseInputEl.value; //math floor, parse
+
+    nurseOutputEl.innerHTML += "<p>I 2020 kunne kunne en gjennomsnittlig sykepleier kjøpe " + n2020 + "% av boligene i Oslo. Du bommet med "+ (n2020 - guess) +" prosentpoeng.";
+    console.log("nurseTruth, "+nurseOutputEl)
+
+    div.innerHTML = "<p> trueTable </p>"; //let trueTable = 1.3% hus highlighted
 }
