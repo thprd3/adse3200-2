@@ -1,3 +1,6 @@
+drit i relative - bare kopier TIMELINE
+du må være raskere
+
 ***** PLAN
 * Lag 3 barebones interaktive visualiseringer m kilder
 * Lag transitions, pynt, mer
@@ -44,7 +47,3 @@ Alle må ha samme dimensojner, være rette og ha hvit opaque bakgrunn!
 **** RELATIVE 
 d3.js - enten racing bar chart ulike byer
 - eller økende årslønn = voksende person og parallelt økende hus = voksende huspris
-
-
-**** FORMATTING
-Timeline: horizontal

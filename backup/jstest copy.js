@@ -1,140 +1,31 @@
 const main = document.getElementById("prime");
 
 /* ----------- Class and Objects ----------- */
-yearArray = [
-    y2010 = {
-      "Navn": 2010,
-      "PiOslo": 69.7,
-      "PiNorge": 74.6,
-      "KvmPris": "35,100 kr",
-      "Inntekt": "500,700 kr",
-      "EndringPiOslo": "100.00%",
-      "EndringPiNorge": "100.00%",
-      "DiffPi": "0.00%",
-      "EndringInntekt": "100.00%",
-      "EndringKvmPris": "100.00%"
-    },
-    y2011 = {
-      "Navn": 2011,
-      "PiOslo": 77.3,
-      "PiNorge": 80.9,
-      "KvmPris": "38,480 kr",
-      "Inntekt": "518,400 kr",
-      "EndringPiOslo": "110.90%",
-      "EndringPiNorge": "108.45%",
-      "DiffPi": "2.46%",
-      "EndringInntekt": "103.54%",
-      "EndringKvmPris": "109.63%"
-    },
-    y2012 = {
-      "Navn": 2012,
-      "PiOslo": 82.7,
-      "PiNorge": 86,
-      "KvmPris": "41,017 kr",
-      "Inntekt": "533,200 kr",
-      "EndringPiOslo": "118.65%",
-      "EndringPiNorge": "115.28%",
-      "DiffPi": "3.37%",
-      "EndringInntekt": "106.49%",
-      "EndringKvmPris": "116.86%"
-    },
-    y2013 = {
-      "Navn": 2013,
-      "PiOslo": 89.2,
-      "PiNorge": 91.4,
-      "KvmPris": "41,948 kr",
-      "Inntekt": "543,500 kr",
-      "EndringPiOslo": "127.98%",
-      "EndringPiNorge": "122.52%",
-      "DiffPi": "5.46%",
-      "EndringInntekt": "108.55%",
-      "EndringKvmPris": "119.51%"
-    },
-    y2014 = {
-      "Navn": 2014,
-      "PiOslo": 87,
-      "PiNorge": 91.7,
-      "KvmPris": "42,606 kr",
-      "Inntekt": "548,600 kr",
-      "EndringPiOslo": "124.82%",
-      "EndringPiNorge": "122.92%",
-      "DiffPi": "1.90%",
-      "EndringInntekt": "109.57%",
-      "EndringKvmPris": "121.38%"
-    },
-    y2015 = {
-      "Navn": 2015,
-      "PiOslo": 97.4,
-      "PiNorge": 98.3,
-      "KvmPris": "46,753 kr",
-      "Inntekt": "551,000 kr",
-      "EndringPiOslo": "139.74%",
-      "EndringPiNorge": "131.77%",
-      "DiffPi": "7.97%",
-      "EndringInntekt": "110.05%",
-      "EndringKvmPris": "133.20%"
-    },
-    y2016 = {
-      "Navn": 2016,
-      "PiOslo": 106.5,
-      "PiNorge": 102.8,
-      "KvmPris": "51,941 kr",
-      "Inntekt": "538,900 kr",
-      "EndringPiOslo": "152.80%",
-      "EndringPiNorge": "137.80%",
-      "DiffPi": "15.00%",
-      "EndringInntekt": "107.63%",
-      "EndringKvmPris": "147.98%"
-    },
-    y2017 = {
-      "Navn": 2017,
-      "PiOslo": 128.9,
-      "PiNorge": 113.2,
-      "KvmPris": "57,525 kr",
-      "Inntekt": "542,400 kr",
-      "EndringPiOslo": "184.94%",
-      "EndringPiNorge": "151.74%",
-      "DiffPi": "33.19%",
-      "EndringInntekt": "108.33%",
-      "EndringKvmPris": "163.89%"
-    },
-    y2018 = {
-      "Navn": 2018,
-      "PiOslo": 122.6,
-      "PiNorge": 112,
-      "KvmPris": "58,761 kr",
-      "Inntekt": "542,600 kr",
-      "EndringPiOslo": "175.90%",
-      "EndringPiNorge": "150.13%",
-      "DiffPi": "25.76%",
-      "EndringInntekt": "108.37%",
-      "EndringKvmPris": "167.41%"
-    },
-    y2019 = {
-      "Navn": 2019,
-      "PiOslo": 128.3,
-      "PiNorge": 115.4,
-      "KvmPris": "61,729 kr",
-      "Inntekt": "547,200 kr",
-      "EndringPiOslo": "184.07%",
-      "EndringPiNorge": "154.69%",
-      "DiffPi": "29.38%",
-      "EndringInntekt": "109.29%",
-      "EndringKvmPris": "175.87%"
-    },
-    y2020 = {
-      "Navn": 2020,
-      "PiOslo": 132.2,
-      "PiNorge": 117.6,
-      "KvmPris": "60,603 kr",
-      "Inntekt": "546,700 kr",
-      "EndringPiOslo": "189.67%",
-      "EndringPiNorge": "157.64%",
-      "DiffPi": "32.03%",
-      "EndringInntekt": "109.19%",
-      "EndringKvmPris": "172.66%"
+class yearObj {
+    constructor(name, avgPrice, sqmPrice, avgSalary, percentAvg, percentSqm) {
+        this.name = name;
+        this.avgPrice = avgPrice;
+        this.sqmPrice = sqmPrice;
+        this.avgSalary = avgSalary;
+        // percentAvg = y2010.avgPrice / avgPrice;
+        // percentSqm = y2010.sqmPrice / sqmPrice;
     }
-]
+}
+
+let y2010 = new yearObj ("2010", 4000000, 72206, 400000);
+let y2011 = new yearObj ("2011", 4000000, 72206, 410000);
+let y2012 = new yearObj ("2012", 4000000, 72206, 420000);
+let y2013 = new yearObj ("2013", 4000000, 72206, 430000);
+let y2014 = new yearObj ("2014", 4000000, 72206, 440000);
+let y2015 = new yearObj ("2015", 4500000, 80506, 450000);
+let y2016 = new yearObj ("2016", 4500000, 80506, 460000);
+let y2017 = new yearObj ("2017", 4500000, 80506, 470000);
+let y2018 = new yearObj ("2018", 4500000, 80506, 480000);
+let y2019 = new yearObj ("2019", 5000000, 87706, 490000);
+let y2020 = new yearObj ("2020", 5000000, 87706, 500000);
+
+const yearArray = [];
+yearArray.push(y2010,y2011,y2012,y2013,y2014,y2015,y2016,y2017,y2018,y2019,y2020);
 
 function next() {
     main.innerHTML=
@@ -199,9 +90,8 @@ function relative() {
             setTimeout(function(){
                 //upperLeft.innerHTML= [i];
                 //upperRight.innerHTML= [i];
-                lowerLeft.innerHTML = "Medianinntekt: " +yearArray[i].Inntekt;
-                lowerRight.innerHTML = "Median boligpris: "+yearArray[i].PiOslo;
-                lowerRight.innerHTML = "Kvadratmeterpris: "+yearArray[i].KvmPris;
+                lowerLeft.innerHTML = "Medianinntekt: " +yearArray[i].avgSalary + " kr";
+                lowerRight.innerHTML = "Median boligpris: "+yearArray[i].avgPrice + " kr";
             }, 1000 * i);
         }(i));
     }
@@ -237,19 +127,19 @@ function constructSpans() {
     const timelineEl = document.getElementById("timelineVis");
 
     for (let i = 0; i < yearArray.length; i++){
-        timelineEl.innerHTML+="<span id='"+yearArray[i].Navn+"'class='yearSpan'>"+yearArray[i].Navn+"</span>";
+        timelineEl.innerHTML+="<span id='"+yearArray[i].name+"'class='yearSpan'>"+yearArray[i].name+"</span>";
     }
 }
 
 function constructListeners(){
     for (let i = 0; i < yearArray.length; i++){
-        document.getElementById(yearArray[i].Navn).addEventListener("click", function(){ selectYear(yearArray[i])})
+        document.getElementById(yearArray[i].name).addEventListener("click", function(){ selectYear(yearArray[i])})
     }
 }
 
-function selectYear(year){
+function selectYear(yo){
     const selectedYearEl = document.getElementById("selectedYear");
-    selectedYearEl.innerHTML="<br><br>År: " + year.Navn + "<br>Prisindeks Oslo: " + year.PiOslo + "<br>Kvadratmeterpris: "+year.KvmPris+"<br><br>";
+    selectedYearEl.innerHTML="<br><br>År: " + yo.name + "<br>Gj.snittlig boligpris: " + yo.avgPrice + "<br>Kvadratmeterpris: "+yo.sqmPrice+"<br><br>";
 }
 
 /* ---------- nurse ------- */

@@ -3,6 +3,7 @@
     font-family: 'Franklin Gothic Medium', 'Verdana', Arial, sans-serif;
     user-select: none;
     text-align: center;
+    max-height: 100%;
 }
 
 /* ------------------- general -------------------- */
@@ -11,8 +12,6 @@
     width: 100%;
     height: 100%;
 }
-
-
 
 .super {
     display: flex;
@@ -54,7 +53,7 @@ footer {
 
 .main {
     position: absolute;
-    top: 15vh;
+    top: 25vh;
     height:100%;
     width:100%;
 }
@@ -227,14 +226,28 @@ cursor: pointer;
 }
 
 /* ---- relative ----- */
-#relativeWrapper {
+#relativeMain, #outroMain {
     display:flex;
-    background-color: #5f4bde45;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
+    position: absolute;
+    top: 50vh;
 }
 
-#relativeWrapper div{
-    flex:1;
+#relativeLeft {
+
+}
+
+#relativeRight {
+
+}
+
+
+/* ---- outro ----- */
+#outroBottom {
+    position: absolute;
+    top: 20vh;
+}
+
+#relativeMain button {
+    position: absolute;
+    top: 30vh;
 }
