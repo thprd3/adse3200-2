@@ -55,9 +55,10 @@ selectYear(y2010);
 /* ---------- nurse ------- */
 let nurseInputEl = document.getElementById("nurseInput");
 let nurseOutputEl = document.getElementById("nurseOutput");
-let div = document.getElementById("nurseVis2");
+let div = document.getElementById("nurseVis");
 
 const n2020 = 1.3;
+let houseString = "<td><img src = 'house.png' alt = 'house'></td>";
 
 function nurseGuess () {
     let guess = nurseInputEl.value; //math floor, parse
@@ -65,19 +66,20 @@ function nurseGuess () {
     let outputString = "<p>Du gjettet "+ guess + "%.";
     nurseOutputEl.innerHTML = outputString;
     generateGrid(guess);
+    document.getElementById("nurseTitle").remove();
 }
 
 function generateGrid(guess) {
-    // create div nurseVis2, append to nurseWrapper 
+    document.getElementById("nurseVis").style.backgroundColor = "#5f4bde00";
+    //set anims somehow
     let output = "<table><tr>";
     let trCount = 0;
     let max = 100;
     let remainder = max - guess;
     let male = false;
     
-    let nursehouseStringMale = "<td><img src = 'nursehouseM.png' alt = 'nurseHouseM'></td>";
-    let nursehouseStringFemale = "<td><img src = 'nursehouseF.png' alt = 'nurseHouseF'></td>";
-    let houseString = "<td><img src = 'house.png' alt = 'house'></td>";
+    let nursehouseStringMale = "<td class = 'nursehouse'><img src = 'nursehouseM.png' alt = 'nurseHouseM'></td>";
+    let nursehouseStringFemale = "<td class= 'nursehouse'><img src = 'nursehouseF.png' alt = 'nurseHouseF'></td>";
 
     for (let i = 0; i < guess; i++) {
         if (male === true) {
@@ -90,7 +92,7 @@ function generateGrid(guess) {
             male = true;
             trCount++;
         }
-        if (trCount == 10){
+        if (trCount == 20){
             output+= "</tr><tr>"
             trCount = 0;
         }
@@ -99,7 +101,7 @@ function generateGrid(guess) {
     for (let i = 0; i < remainder; i++){
         output+= houseString;
         trCount ++; 
-        if (trCount == 10){
+        if (trCount == 20){
             output+= "</tr><tr>"
             trCount = 0;
             console.log("trCount is reset, is now " + trCount)
@@ -112,9 +114,6 @@ function generateGrid(guess) {
 
     div.innerHTML += "<button onclick='nurseTruth()'>Se svaret</button>";
 
-    document.getElementById("nurseVis").remove();
-
-
 
     // append button click to continue
 }
@@ -122,9 +121,25 @@ function generateGrid(guess) {
 function nurseTruth () {
     //on click to continue
     let guess = nurseInputEl.value; //math floor, parse
+    div.innerHTML = "";
+    let trCount = 1;
 
-    nurseOutputEl.innerHTML += "<p>I 2020 kunne kunne en gjennomsnittlig sykepleier kjøpe " + n2020 + "% av boligene i Oslo. Du bommet med "+ (n2020 - guess) +" prosentpoeng.";
-    console.log("nurseTruth, "+nurseOutputEl)
+    nurseOutputEl.innerHTML = "<p>I 2020 var sykepleierindeksen " + n2020 + "%. Du bommet med "+ (n2020 - guess) +" prosentpoeng.";
+    nurseOutputEl.innerHTML += "<p>Hva blir den i 2030?</p>";
 
-    div.innerHTML = "<p> trueTable </p>"; //let trueTable = 1.3% hus highlighted
+    let output = "<table><tr><td class = 'nursehouse'><img src = 'nursehouseF.png' alt = 'nurseHouseF'></td>";
+
+    for (let i = 0; i < 99; i++){
+        output+= houseString;
+        trCount ++; 
+        if (trCount == 20){
+            output+= "</tr><tr>"
+            trCount = 0;
+            console.log("trCount is reset, is now " + trCount)
+        }
+    }
+
+    output+= "</table>";
+
+    div.innerHTML = output;
 }

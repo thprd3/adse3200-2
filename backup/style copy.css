@@ -6,19 +6,23 @@
 }
 
 /* ------------------- general -------------------- */
-
 .prime {
     width: 100%;
-    height: 100%;
+    height:310vh;
 }
 
-
+.sub {
+    font-style: italic;
+    font-size: 2rem !important;
+    margin: -5px !important;
+}
 
 .super {
     display: flex;
-    height: 100%;
+    height: 33.333%;
     width: 100%;
     flex-direction: column;
+    margin-bottom: 100vh;
     animation: fadein 1s;
 }
 
@@ -28,14 +32,26 @@
     font-size: 1.5rem;
 }
 
+#timeline {
+    background-color: black;
+    color:white;
+}
+
+#third {
+    background-color: white;
+}
+
+.active {
+    animation: fadein 3s;
+}
+
+.deactivated {
+    animation: fadeout 1s;
+}
+
 .next {
     position:absolute;
     top: 90vh;
-}
-footer {
-    position: absolute;
-    top:80vh;
-    font-size: 0.75rem;
 }
 
 .prev {
@@ -47,26 +63,12 @@ footer {
 }
 
 .title {
+    padding-top: 5vh;
     font-size: 3rem;
-    position: absolute;
-    top: 12vh;
-}
-
-.main {
-    position: absolute;
-    top: 15vh;
-    height:100%;
-    width:100%;
 }
 
 .vis {
     font-size: 2rem;
-}
-
-.sub {
-    font-style: italic;
-    font-size: 2rem;
-    margin: -5px;
 }
 
 /* animation */
@@ -109,8 +111,12 @@ footer {
 
 #nurseWrapper {
     display: flex;
-    height: 90vh;
+    width:100%;
+    height: 80%;
     align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    overflow:hidden;
 }
 
 @keyframes slide {
@@ -133,18 +139,34 @@ footer {
     z-index: -1;
 }
 
+#nurseWrapper div {
+    margin: 10px;
+    line-height: 125%;
+}
+
+#nurseOutput {
+    min-height: 10%;
+}
 #nurseOutput p {
     animation: fadein 8s;
     font-size: 3rem;
 }
 
 #nurseVis {
+    width: 100%;
     background-color: #5f4bde61;
+    padding:20px;
+}
+
+#nurseVis button{
+    margin:30px;
+    margin-left:0px;
 }
 
 #nurseVis p {
     font-size: 2.25rem;
 }
+
 
 table {
     margin:auto;
@@ -204,15 +226,16 @@ output {
 }
 
 .nurse button {
-    color: #14396A ;
-    font-size: 25px;
-    text-shadow: 0px 0px 0px #5F4BDE;
-    box-shadow: 1px 1px 1px #BEE2F9;
-    padding: 25px 25px;
-    border-radius: 10px;
-    border: 2px solid #3866A3;
-    background: #63B8EE;
-    background: linear-gradient(to top, #63B8EE, #468CCF);
+font-family: verdana;
+color: #14396A !important;
+font-size: 25px;
+text-shadow: 0px 0px 0px #5F4BDE;
+box-shadow: 1px 1px 1px #BEE2F9;
+padding: 25px 25px;
+border-radius: 10px;
+border: 2px solid #3866A3;
+background: #63B8EE;
+background: linear-gradient(to top, #63B8EE, #468CCF);
 }
 
 .nurse button:hover {
@@ -228,13 +251,5 @@ cursor: pointer;
 
 /* ---- relative ----- */
 #relativeWrapper {
-    display:flex;
-    background-color: #5f4bde45;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-}
-
-#relativeWrapper div{
-    flex:1;
+    background-color: #5F4BDE;
 }

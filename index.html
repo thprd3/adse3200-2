@@ -9,61 +9,27 @@
     <title>ADSE3200 Eksamen</title>
 </head>
 <body>
-    <div class="prime">
-
-
-
-
-
-
-        <div class="super" id="timeline">
-            <div class="el title">Boligprisvekst Oslo 2010-2020</div>
-            <div id="selectedYear"></div>
-            <div class="el vis" id="timelineVis">
-                <span id="price"></span>
-            </div>
-            <div class="el next" onclick="window.location.href='#nurse'">
+    <div class="prime" id="prime">
+        <div class="super" id="intro">
+            <div class="el prev" onclick="window.location.href='#outro'">
                 <i class="material-icons" style="font-size:62px">forward</i>
             </div>
-        </div>
-
-
-
-
-
-        <div class="super" id="nurse">
-            <div class="el prev" onclick="window.location.href='#timeline'">
-                <i class="material-icons" style="font-size:62px">forward</i>
+            <div class="el title">
+                <p>ADSE3200 eksamen H2022</p>
             </div>
-            <div class="el title">Sykepleierindeksen</div>
-            <div id="nurseWrapper">
-                <div class="nurse" id="nurseVis">
-                    <p> I 2010 kunne en typisk sykepleier kjøpe 24.5% av alle boliger i Oslo. </p>
-                    <p> Hva tror du indeksen var i 2020? </p>
-                    <input type="number" id="nurseInput"> <button onclick="nurseGuess()">Gjett</button>
-                </div>
-                <div class="nurse" id="nurseVis2">
+            <div class="main">
+                <p class="sub"> Bolipriser i Oslo 2010-2020</p> 
+                <p class="sub"> Av kandidat xxyy</p> 
+                <br><br><br><br>
+                <div class="el">
+                    <p>Mellom 2010 og 2020 så boligprisene i Oslo en enorm vekst.</p>
+                    <p>Hva betyr det for byens innbyggere?</p>    
                 </div>
             </div>
-            <div class="el" id="nurseOutput"></div>
-            <div class="el next" onclick="window.location.href='#relative'">
-                <i class="material-icons" style="font-size:62px">forward</i>
-            </div>
-            <footer class="source">https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021</footer>
-        </div>
-
-
-        <div class="super" id="relative">
-            <div class="el prev" onclick="window.location.href='#nurse'">
-                <i class="material-icons" style="font-size:62px">forward</i>
-            </div>
-            <div class="el title">Relation avg salary avg home size comp</div>
-            <div class="el vis">[I AM A HOUSE] [I AM A GUY]</div>
-            <div class="el">Låneindeks stats</div>
-            <div class="el next" onclick="window.location.href='#timeline'">
+            <div class="el next" onclick="next1()">
                 <i class="material-icons" style="font-size:62px">forward</i>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="jstest.js"></script>
 </body>

@@ -4,6 +4,10 @@
 * Lag intro og finale
 * Gjør visualiseringene bedre og bedre
 
+Vurder sticky nav buttons som oppdaterer href onclick ? Eller =nextElement somehow
+* Kanskje pilene "aktiverer" divene og, for animasjons purposes
+Maybe burger-meny som backup
+
 ***** STRUKTUR
 intro, 3 vis, finale
 Vurder nurse først, finest og wow-faktor når bruker selv gjetter uten å vite
