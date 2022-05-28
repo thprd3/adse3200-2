@@ -1,6 +1,6 @@
-$.ready {
+$(document).ready(function(){
     next();
-}
+});
 
 const main = document.getElementById("prime");
 
@@ -150,8 +150,8 @@ function next() {
             '<p>ADSE3200 eksamen H2022</p>'+
         '</div>'+
         '<div id ="introMain">'+
-            '<p class="sub"> Boligpriser i Oslo 2010-2020</p>'+
-            '<p class="sub"> Av kandidat xxyy</p>'+
+            '<p class="sub"> Boligpriser i Oslo 2010-2020</p><br><br>'+
+            '<p class="sub"> Av Simen Stenersen<br>(s365329 / 640)</p>'+
             '<div class="el">'+
                 '<p>Mellom 2010 og 2020 så boligprisene i Oslo en enorm vekst.</p>'+
                 '<p>Hva betyr det for byens innbyggere?</p>'+
@@ -183,7 +183,7 @@ function next1() {
                     '<div class= "el" id="rr1"><img src="house.png" width="300px" height="300px"></div>'+
                     '<div class= "el" id="rr2"></div>'+
                 '</div>'+
-                '<button class="el" onclick="relative()">Click me</button>'+
+                '<button class="el" onclick="relative()">Klikk her for å se utviklingen</button>'+
             '</div>'+
         '</div>'+
         '<div class="el next" onclick="next2()">'+
@@ -329,7 +329,6 @@ function chart() {
 /* ---------- nurse ------- */
 
 function next3() {
-    const f = 'oninput="this.nextElementSibling.value = this.value+'%'">';
     main.innerHTML=
     '<div class="el prev" onclick="next2()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
@@ -337,22 +336,27 @@ function next3() {
     '<div class="super" id="nurse">'+
         '<div class="el title" id="nurseTitle">Sykepleierindeksen</div>'+
         '<div id="nurseWrapper">'+
-            '<div class="nurse" id="nurseVis">'+
-                '<div class="sliding-background"></div>'+
-                '<p> I 2010 kunne en typisk sykepleier kjøpe 24.5% av alle boliger i Oslo. </p>'+
-                '<p> Hva tror du indeksen var i 2020? </p>'+
-                '<input type="range" id="nurseInput" value="25" min="1" max="100s"'+
-                f+
-                '<output>25%</output>'+
-                '<button onclick="nurseGuess()">Gjett</button>'+
-                '<div id ="nurseOutput"></div>'+
+            '<div class="el nurse" id="nurseVis">'+
+                '<div class="el sliding-background"></div>'+
+                '<p class ="white"> I 2010 kunne en typisk sykepleier kjøpe 24.5% av alle boliger i Oslo. </p>'+
+                '<p class="white"> Hva tror du indeksen var i 2020? </p>'+
+                '<input type="range" id="nurseInput" value="25" min="1" max="100"'+
+                '<span id="rangeOutput"></span>'+
+                '<br><p id="help" class ="white">25%</p>'+
+                '<button class="el" onclick="nurseGuess()">Gjett</button>'+
             '</div>'+
-            '<footer class="source">Kilde: https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021</footer>'+
         '</div>'+
     '</div>'+
     '<div class="el next" onclick="next4()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
-    '</div>';
+    '</div>'+
+    '<footer class="source">Kilde: https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021</footer>'
+    ;
+
+    document.getElementById("nurseInput").addEventListener("change", function() {
+        document.getElementById("help").innerHTML = document.getElementById("nurseInput").value+"%";
+        console.log(this.value);
+    });
 }
 
 const n2020 = 1.3;
@@ -361,12 +365,11 @@ let houseString = "<td><img src = 'house.png' alt = 'house'></td>";
 
 function nurseGuess () {
     let nurseInputEl = document.getElementById("nurseInput");
-    let nurseOutputEl = document.getElementById("nurseOutput");
+    let nurseOutputEl = document.getElementById("nurseVis");
 
-    guess = nurseInputEl.value; //math floor, parse
-    // if < / > / =
-    let outputString = "<p>Du gjettet "+ guess + "%.";
-    nurseOutputEl.innerHTML = outputString;
+    guess = nurseInputEl.value; 
+    let outputString = '<div id ="nurseOutput"><p>Du gjettet '+ guess + '%.</p></div>';
+    nurseOutputEl.innerHTML += outputString;
     generateGrid(guess);
     document.getElementById("nurseTitle").remove();
 }
@@ -414,25 +417,22 @@ function generateGrid(guess) {
 
     div.innerHTML = output;
 
+    let outputString = '<div id ="nurseOutput" class="el"><p>Du gjettet '+ guess + '%.</p></div>';
+    div.innerHTML += outputString;
+
     div.innerHTML += "<button onclick='nurseTruth()'>Se svaret</button>";
-    div.innerHTML += "<div class='el' id='truth'></div>";
 
     // append button click to continue
 }
 
 function nurseTruth () {
     //on click to continue
-    let nurseInputEl = document.getElementById("nurseInput");
-    let nurseOutputEl = document.getElementById("truth");
     let div = document.getElementById("nurseVis");
 
     div.innerHTML = "";
     let trCount = 1;
 
-    nurseOutputEl.innerHTML = "<p>I 2020 var sykepleierindeksen " + n2020 + "%. Du bommet med "+ (n2020 - guess) +" prosentpoeng.";
-    nurseOutputEl.innerHTML += "<p>Hva blir den i 2030?</p>";
-
-    let output = "<table><tr><td class = 'nursehouse'><img src = 'nursehouseF.png' alt = 'nurseHouseF'></td>";
+    let output = "<table><tr><td class = 'nursehouse2'><img src = 'nursehouseF.png' alt = 'nurseHouseF'></td>";
 
     for (let i = 0; i < 99; i++){
         output+= houseString;
@@ -446,7 +446,11 @@ function nurseTruth () {
 
     output+= "</table>";
 
-    div.innerHTML = output;
+    div.innerHTML += output;
+    
+    div.innerHTML += "<div id ='nurseOutput2' class='el'><p>I 2020 var sykepleierindeksen " + n2020 + "%. Du bommet med "+ (n2020 - guess) +" prosentpoeng.</p>"+
+    "<p>Hva blir den i 2030?</p></div>";
+
 }
 
 /* ---------- Outro ---------*/
@@ -461,10 +465,12 @@ function next4() {
             '<p>Avslutning</p>'+
         '</div>'+
         '<div id ="outroMain">'+
-            '<p class="sub"> Utvalgt statistikk 1:</p>'+ 
-            '<p class="sub"> Utvalgt statistikk 2:</p>'+
-            '<br><br><p id="outroBottom">Poignant avsluning. </p>'+
+            '<p> Fra 2010 til 2020...</p>'+ 
+            '<p class="sub"> ... Økte boligprisene i Oslo 79.5 prosentpoeng mer enn median inntekt</p>'+
+            '<p class="sub"> ... Økte Oslos boligpriser 32 prosentpoeng mer enn resten av landet.</p>'+
+            '<p class="sub"> ... Ble Oslos boliger utilgjengelige for dyktige fagfolk vi sårt trenger.</p>'+
         '</div>'+
+        '<p id="outroBottom" class="el">Se rapporten for kildeliste. </p>'+
     '</div>'+
     '<div class="el next" onclick="next()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+

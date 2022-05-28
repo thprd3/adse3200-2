@@ -35,7 +35,7 @@
 }
 footer {
     position: absolute;
-    top:80vh;
+    top:95vh;
     font-size: 0.75rem;
 }
 
@@ -54,11 +54,16 @@ footer {
     top: 12vh;
 }
 
-#introMain {
+#introMain, #outroMain {
     position: absolute;
-    top: 55vh;
+    top: 40vh;
     height:100%;
     width:100%;
+}
+
+#introMain div {
+    position: absolute;
+    top: 30vh;
 }
 
 .sub {
@@ -111,7 +116,7 @@ footer {
 #defaultText {
     position: absolute;
     left:33vw;
-    color:greenyellow;
+    color:gold;
 }
 
 #timelineGraph { 
@@ -174,10 +179,10 @@ footer {
 
 @keyframes slide {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(1000px, 0, 0);
     }
     100% {
-      transform: translate3d(-2113px, 0, 0); /* The image width */
+      transform: translate3d(0 , 0, 0); /* The image width */
     }
 }
 
@@ -197,24 +202,63 @@ footer {
     background: url("nursebg.png") repeat-x;
     height: 100%;
     width: 6339px;
-    animation: slide 60s linear infinite;
+    /* animation: slide 5s linear infinite; */
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: -1;
 }
 
-#nurseOutput p {
+#nurseOutput {
+    position: absolute;
+    top: 40vh;
+}
+
+#nurseOutput2 {
+    position: absolute;
+    top: 44vh;
+    font-size: 1.5rem;
+}
+
+#nurseOutput, #nurseOutput2 p {
     animation: fadein 8s;
-    font-size: 3rem;
 }
 
 #nurseVis {
-    background-color: #5f4bde61;
+    position: absolute;
+    top:30vh;
+    background-color: #529dffb7;
+    padding-bottom:50px;
 }
 
-#nurseVis p {
-    font-size: 2.25rem;
+.white {
+    color: rgba(249, 249, 249, 0.964);
+}
+
+table{
+    position: absolute;
+    top: -10vh;
+}
+
+.nurse button {
+    color: #14396A ;
+    font-size: 25px;
+    text-shadow: 0px 0px 0px #5F4BDE;
+    box-shadow: 1px 1px 1px #BEE2F9;
+    padding: 20px 20px;
+    border-radius: 10px;
+    border: 2px solid #3866A3;
+    background: #63B8EE;
+    background: linear-gradient(to top, #63B8EE, #468CCF);
+    display: block;
+    width:10%;
+    position: absolute;
+    left: 45vw;
+    top: 50vh;
+}
+
+#help {
+    margin: 5px;
 }
 
 table {
@@ -246,16 +290,13 @@ input[type=range] {
     width: 50%;
     background-color: rgba(0, 0, 0, 0);
   }
-  input[type=range]:focus {
-    outline: none;
-  }
   input[type=range]::-webkit-slider-runnable-track {
     width: 66%;
     height: 10px;
     cursor: pointer;
-    animate: 0.2s;
     border-radius: 50px;
     border: 1px solid #000000;
+    background-color: #ffffff8c;
   }
   input[type=range]::-webkit-slider-thumb {
     box-shadow: 1px 1px 1px #000000;
@@ -263,28 +304,11 @@ input[type=range] {
     height: 40px;
     width: 40px;
     border-radius: 50px;
-    background: #AD84C2;
+    background: #14396A;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -16px;
   }
-
-output {
-    display:block;
-    font-size: 3rem;
-}
-
-.nurse button {
-    color: #14396A ;
-    font-size: 25px;
-    text-shadow: 0px 0px 0px #5F4BDE;
-    box-shadow: 1px 1px 1px #BEE2F9;
-    padding: 25px 25px;
-    border-radius: 10px;
-    border: 2px solid #3866A3;
-    background: #63B8EE;
-    background: linear-gradient(to top, #63B8EE, #468CCF);
-}
 
 .nurse button:hover {
 color: #14396A !important;
@@ -293,8 +317,11 @@ background: linear-gradient(to top, #468CCF, #63B8EE);
 cursor: pointer;
 }
 
-.nursehouse {
-    border: 2px solid purple;
+
+.nursehouse2 {
+    border: 2px solid red;
+    border-radius: 50%;
+    padding: 15px;
 }
 
 /* ---- relative ----- */
@@ -327,5 +354,16 @@ cursor: pointer;
 #relativeMain button {
     position: absolute;
     top: 30vh;
-    left: 47vw;
+    left: 45vw;
+    width:10%;
+}
+
+#outroBottom {
+    position: absolute;
+    top: 80vh; 
+    font-size: 1rem;
+}
+
+#outroMain p {
+    font-size: 2rem;
 }
