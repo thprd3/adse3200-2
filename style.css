@@ -81,30 +81,61 @@ footer {
 }
 
 /* timeline */
-#selectedYear{
-    font-size: 2rem;
+
+#timelineMain { /* contains selectedyear and change */
+    display:flex;
+    width:100%;
+    position: absolute;
+    top: 25vh;
+}
+
+#selectedYear, #change{
+    font-size: 1.5rem;
     flex: 1;
     animation: fadein 1s;
 }
 
-#timeline span:hover{
-    transform: scale(1.3);
-    -webkit-transform:scale(1.3);
-    cursor: pointer;
+#selectedYear p {
+    text-align: left;
 }
 
-#timeline span{
-    display: inline-block;
+#timelineVis { /* contains yearspan */
+    position: absolute;
+    top: 85vh;
+}
+
+.yearSpan {
     margin-right: 20px;
     flex: 1;
     font-size: 1.5rem;
 }
 
-#timelineWrapper {
-    background-color: #5f4bde61;
+.yearSpan:hover{
+    transform: scale(1.3);
+    -webkit-transform:scale(1.3);
+    cursor: pointer;
 }
 
-/* nurse */
+#timelineGraph {
+    position: absolute;
+    top: 80vh;
+    border: 2px solid red;
+}
+
+.bigYear {
+    font-size: 3rem !important;
+    margin-bottom: 10px;
+}
+
+#yellowYear {
+    color: gold;
+}
+
+.redYear {
+    color:red;
+}
+
+/* ---------- nurse ----------  */
 
 #nurseWrapper {
     display: flex;
