@@ -1,9 +1,10 @@
 :root{
     box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Verdana', Arial, sans-serif;
+    font-family: 'Verdana', Arial, sans-serif;
     user-select: none;
     text-align: center;
     max-height: 100%;
+    overflow: hidden;
 }
 
 /* ------------------- general -------------------- */
@@ -30,6 +31,7 @@
 .next {
     position:absolute;
     top: 90vh;
+    animation: none !important;
 }
 footer {
     position: absolute;
@@ -40,6 +42,7 @@ footer {
 .prev {
     position: absolute;
     top: 5vh;
+    animation: none !important;
 }
 .prev i {
     transform: rotateY(180deg);
@@ -51,11 +54,15 @@ footer {
     top: 12vh;
 }
 
-.main {
+#introMain {
     position: absolute;
-    top: 25vh;
+    top: 55vh;
     height:100%;
     width:100%;
+}
+
+.sub {
+    margin:50px;
 }
 
 .vis {
@@ -86,7 +93,7 @@ footer {
     display:flex;
     width:100%;
     position: absolute;
-    top: 25vh;
+    top: 23vh;
 }
 
 #selectedYear, #change{
@@ -95,15 +102,33 @@ footer {
     animation: fadein 1s;
 }
 
-#selectedYear p {
-    text-align: left;
+#change {
+}
+
+#graphWrapper { /* Contains timelineVis and graph */
+}
+
+#defaultText {
+    position: absolute;
+    left:33vw;
+    color:greenyellow;
+}
+
+#timelineGraph { 
+    flex:1;
+    position: absolute;
+    top: 45vh;
+    cursor: pointer;
+    left:25vw;
 }
 
 #timelineVis { /* contains yearspan */
+    flex:1;
     position: absolute;
-    top: 85vh;
+    top: 80vh;
+    left:3vw;
+    animation: pulse 4s;
 }
-
 .yearSpan {
     margin-right: 20px;
     flex: 1;
@@ -114,12 +139,13 @@ footer {
     transform: scale(1.3);
     -webkit-transform:scale(1.3);
     cursor: pointer;
+    display: inline-block;
+    font-style: italic;
 }
 
-#timelineGraph {
-    position: absolute;
-    top: 80vh;
-    border: 2px solid red;
+
+#selectedYear p {
+    text-align: left;
 }
 
 .bigYear {
@@ -131,8 +157,11 @@ footer {
     color: gold;
 }
 
-.redYear {
+.red {
     color:red;
+}
+.green {
+    color:green;
 }
 
 /* ---------- nurse ----------  */
@@ -149,6 +178,18 @@ footer {
     }
     100% {
       transform: translate3d(-2113px, 0, 0); /* The image width */
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.0);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1.0);
     }
 }
 
@@ -257,10 +298,10 @@ cursor: pointer;
 }
 
 /* ---- relative ----- */
-#relativeMain, #outroMain {
+#relativeMain {
     display:flex;
     position: absolute;
-    top: 50vh;
+    top: 40vh;
 }
 
 #relativeLeft {
@@ -271,6 +312,11 @@ cursor: pointer;
 
 }
 
+#relativeYear {
+    position: absolute;
+    top: -20vh;
+    font-size: 2rem;
+}
 
 /* ---- outro ----- */
 #outroBottom {
@@ -281,4 +327,5 @@ cursor: pointer;
 #relativeMain button {
     position: absolute;
     top: 30vh;
+    left: 47vw;
 }

@@ -1,3 +1,7 @@
+$.ready {
+    next();
+}
+
 const main = document.getElementById("prime");
 
 /* ----------- Class and Objects ----------- */
@@ -138,70 +142,76 @@ yearArray = [
 
 function next() {
     main.innerHTML=
+    '<div class="el prev" onclick="next4()">'+
+        '<i class="material-icons" style="font-size:62px">forward</i>'+
+    '</div>'+
     '<div class="super" id="intro">'+
-        '<div class="el prev" onclick="next4()">'+
-            '<i class="material-icons" style="font-size:62px">forward</i>'+
-        '</div>'+
         '<div class="el title">'+
             '<p>ADSE3200 eksamen H2022</p>'+
         '</div>'+
-        '<div class="main">'+
-            '<p class="sub"> Bolipriser i Oslo 2010-2020</p>'+
+        '<div id ="introMain">'+
+            '<p class="sub"> Boligpriser i Oslo 2010-2020</p>'+
             '<p class="sub"> Av kandidat xxyy</p>'+
             '<div class="el">'+
                 '<p>Mellom 2010 og 2020 så boligprisene i Oslo en enorm vekst.</p>'+
                 '<p>Hva betyr det for byens innbyggere?</p>'+
             '</div>'+
         '</div>'+
-        '<div class="el next" onclick="next1()">'+
-            '<i class="material-icons" style="font-size:62px">forward</i>'+
-        '</div>'+
-    '</div>';
-}
+    '</div>'+
+    '<div class="el next" onclick="next1()">'+
+        '<i class="material-icons" style="font-size:62px">forward</i>'+
+    '</div>'
+;}
 
 /* ----- relative ----- */
 
 function next1() {
     main.innerHTML=
+    '<div class="el prev" onclick="next()">'+
+        '<i class="material-icons" style="font-size:62px">forward</i>'+
+    '</div>'+
     '<div class="super" id="relative">'+
-        '<div class="el prev" onclick="next()">'+
-            '<i class="material-icons" style="font-size:62px">forward</i>'+
-        '</div>'+
         '<div id="relativeWrapper">'+
-            '<div class="el title">This is relative</div>'+
+            '<div class="el title">Boligprisene drar fra lønnsveksten</div>'+
             '<div class= "el" id="relativeMain">'+
+            '<p id="relativeYear" class="el">Trykk på knappen for å se utviklingen.</p>'+
                 '<div class= "el" id="relativeLeft">'+
-                    '<div class= "el" id="rl1">Left content</div>'+
-                    '<div class= "el" id="rl2">Left sub-content</div>'+
+                    '<div class= "el" id="rl1"><img src="personico.png" width="300px" height="300px"></div>'+
+                    '<div class= "el" id="rl2"></div>'+
                 '</div>'+
                 '<div class= "el" id="relativeRight">'+
-                    '<div class= "el" id="rr1">Right content</div>'+
-                    '<div class= "el" id="rr2">Right sub-content</div>'+
+                    '<div class= "el" id="rr1"><img src="house.png" width="300px" height="300px"></div>'+
+                    '<div class= "el" id="rr2"></div>'+
                 '</div>'+
-                '<button onclick="relative()">Click me</button>'+
+                '<button class="el" onclick="relative()">Click me</button>'+
             '</div>'+
         '</div>'+
         '<div class="el next" onclick="next2()">'+
             '<i class="material-icons" style="font-size:62px">forward</i>'+
         '</div>'+
-    '</div>';
-}
-
-// rl1 and rr1.innerhtml = img width/height = 1*avgSal and avgPri
+    '</div>'
+;}
 
 function relative() {
+    const guyGrowth = [1, 1.0354, 1.0649, 1.0855, 1.0957, 1.1005, 1.0763, 
+    1.0833, 1.0837, 1.0929, 1.0919];
+    const houseGrowth = [1, 1.0963, 1.1686, 1.1951, 1.2138, 1.3320,
+    1.4798, 1.6389, 1.6741, 1.7587, 1.7266];
     const upperLeft = document.getElementById("rl1");
     const lowerLeft = document.getElementById("rl2");
     const upperRight = document.getElementById("rr1");
     const lowerRight = document.getElementById("rr2");
+    const relativeYear = document.getElementById("relativeYear");
     for(i = 0; i < yearArray.length; i++){
         (function(i){
             setTimeout(function(){
-                //upperLeft.innerHTML= [i];
-                //upperRight.innerHTML= [i];
-                lowerLeft.innerHTML = "Medianinntekt: " +yearArray[i].Inntekt;
-                lowerRight.innerHTML = "Median boligpris: "+yearArray[i].PiOslo;
-                lowerRight.innerHTML = "Kvadratmeterpris: "+yearArray[i].KvmPris;
+                wideGuy = 200+(100 * guyGrowth[i]);
+                wideHouse = 200+(100 * houseGrowth[i]);
+                upperLeft.innerHTML = "<img src='personico.png' width = '"+wideGuy+"' height = '"+wideGuy+"'>";
+                upperRight.innerHTML = "<img src='house.png' width = '"+wideHouse+"' height = '"+wideHouse+"'>";
+                lowerLeft.innerHTML = "Medianinntekt: " +yearArray[i].Inntekt + "<br><span class='green'>Endring: +"+yearArray[i].EndringInntekt+"</span>";
+                lowerRight.innerHTML = "Kvadratmeterpris i Oslo: "+yearArray[i].KvmPris + "<br><span class='red'>Endring: +"+yearArray[i].EndringKvmPris+"</span>";
+                relativeYear.innerHTML = yearArray[i].Navn;
             }, 1000 * i);
         }(i));
     }
@@ -211,30 +221,82 @@ function relative() {
 
 function next2() {
     main.innerHTML=
+    '<div class="el prev" onclick="next1()">'+
+        '<i class="material-icons" style="font-size:62px">forward</i>'+
+    '</div>'+
     '<div class="super" id="timeline">'+
-        '<div class="el prev" onclick="next1()">'+
-            '<i class="material-icons" style="font-size:62px">forward</i>'+
-        '</div>'+
+
         '<div id="timelineWrapper">'+
             '<div class="el title">Boligprisvekst Oslo 2010-2020</div>'+
             '<div id="timelineMain">'+
-                '<div id="selectedYear"></div>'+
+                '<div id="selectedYear"><span id="defaultText">Trykk på tidslinjen nederst for mer detaljert informasjon</span></div>'+
                 '<div id="change"></div>'+
-                '</div>'+
-                '<canvas id= "timelineGraph" width="400" height="400"></canvas>'+
-                '<div class="el vis" id="timelineVis">'+
-                    '<span id="price"></span>'+
-                '</div>'+
             '</div>'+
+            '<div id="graphWrapper">'+
+                '<canvas id= "timelineGraph" width="3" height="1"></canvas>'+
+                '<div class="el vis" id="timelineVis"></div>'+
+            '</div>'+
+
         '</div>'+
-        '<div class="el next" onclick="next3()">'+
-            '<i class="material-icons" style="font-size:62px">forward</i>'+
-        '</div>'+
-    '</div>';
+    '</div>'+
+    '<div class="el next" onclick="next3()">'+
+        '<i class="material-icons" style="font-size:62px">forward</i>'+
+    '</div>'
+    ;
+
     constructSpans();
     constructListeners();
-    selectYear(y2010);
-    chart();
+
+    const labels = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+              label: 'Endring prisindeks Oslo',
+              data: [100, 110.9, 118.65, 127.98, 124.82, 139.74,
+            152.8, 184.94, 175.9, 184.07, 189.67],
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+            },
+            {
+              label: 'Endring prisindeks Norge',
+              data: [100, 108.45, 115.28, 122.52, 122.92, 131.77,
+            137.8, 151.74, 150.13, 154.69, 157.64],
+              fill: false,
+              borderColor: 'rgb(20, 120, 33)',
+              tension: 0.1
+            },
+            {
+              label: 'Endring medianinntekt',
+              data: [100, 103.54, 106.49, 108.55, 109.57, 110.05,
+            107.63, 108.33, 108.37, 109.29, 109.19],
+              fill: false,
+              borderColor: 'rgb(60, 10, 43)',
+              tension: 0.1
+            }
+          ]
+      };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                x:{
+                    display: false //this will remove only the label
+                }
+            }
+        }
+    };
+
+    var ctx = document.getElementById('timelineGraph').getContext('2d');
+    ctx.canvas.parentNode.style.width = "800px";
+
+    const myChart = new Chart(ctx,
+        //document.getElementById("timelineGraph"),
+        config
+    );
 }
 
 function constructSpans() {
@@ -254,36 +316,14 @@ function constructListeners(){
 function selectYear(year){
     const selectedYearEl = document.getElementById("selectedYear");
     selectedYearEl.innerHTML="<span id='yellowYear' class ='bigYear'>" + year.Navn + "</span><br>Prisindeks Oslo: " + 
-    year.PiOslo + "<br>Kvadratmeterpris: "+year.KvmPris;
-    document.getElementById("change").innerHTML="<span class= 'bigYear'> Siden 2010</span><br><span class='redYear'>+" + 
-    year.EndringPiOslo + "</span><br><span class='redYear'>+" + year.EndringKvmPris+"</span>";
+    year.PiOslo + "<br>Kvadratmeterpris: "+year.KvmPris+"<br>Medianinntekt: "+year.Inntekt;
+    document.getElementById("change").innerHTML="<span class= 'bigYear'>Endring siden 2010</span><br><span class='red'>+" + 
+    year.EndringPiOslo + "</span><br><span class='red'>+" + year.EndringKvmPris+"</span><br>"+
+    "<span class=green>+"+year.EndringInntekt+"</span>";
 }
 
 function chart() {
-    const ctx = document.getElementById('myChart').getContext('2d');
-    
-    const labels = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
-    const data = {
-      labels: labels,
-      datasets: [{
-        label: 'Dette er label i datasets',
-        data: [65, 59, 80, 81, 56, 55, 40, 8, 9, 10],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-      }]
-    };
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {}
-    };
-
-    const myChart = new chart(
-        document.getElementById("timelineGraph"),
-        config
-    );
 }
 
 /* ---------- nurse ------- */
@@ -291,28 +331,28 @@ function chart() {
 function next3() {
     const f = 'oninput="this.nextElementSibling.value = this.value+'%'">';
     main.innerHTML=
-    '<div class="super" id="nurse">'+
     '<div class="el prev" onclick="next2()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
-    '<div class="el title" id="nurseTitle">Sykepleierindeksen</div>'+
-    '<div id="nurseWrapper">'+
-        '<div class="nurse" id="nurseVis">'+
-            '<div class="sliding-background"></div>'+
-            '<p> I 2010 kunne en typisk sykepleier kjøpe 24.5% av alle boliger i Oslo. </p>'+
-            '<p> Hva tror du indeksen var i 2020? </p>'+
-            '<input type="range" id="nurseInput" value="25" min="1" max="100s"'+
-            f+
-            '<output>25%</output>'+
-            '<button onclick="nurseGuess()">Gjett</button>'+
-            '<div id ="nurseOutput"></div>'+
+    '<div class="super" id="nurse">'+
+        '<div class="el title" id="nurseTitle">Sykepleierindeksen</div>'+
+        '<div id="nurseWrapper">'+
+            '<div class="nurse" id="nurseVis">'+
+                '<div class="sliding-background"></div>'+
+                '<p> I 2010 kunne en typisk sykepleier kjøpe 24.5% av alle boliger i Oslo. </p>'+
+                '<p> Hva tror du indeksen var i 2020? </p>'+
+                '<input type="range" id="nurseInput" value="25" min="1" max="100s"'+
+                f+
+                '<output>25%</output>'+
+                '<button onclick="nurseGuess()">Gjett</button>'+
+                '<div id ="nurseOutput"></div>'+
+            '</div>'+
+            '<footer class="source">Kilde: https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021</footer>'+
         '</div>'+
-        '<footer class="source">Kilde: https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021</footer>'+
     '</div>'+
     '<div class="el next" onclick="next4()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
-    '</div>'+
-'</div>';
+    '</div>';
 }
 
 const n2020 = 1.3;
@@ -333,7 +373,6 @@ function nurseGuess () {
 
 function generateGrid(guess) {
     document.getElementById("nurseVis").style.backgroundColor = "#5f4bde00";
-    //set anims somehow
     let output = "<table><tr>";
     let trCount = 0;
     let max = 100;
@@ -414,20 +453,20 @@ function nurseTruth () {
 
 function next4() {
     main.innerHTML=
-    '<div class="super" id="outro">'+
     '<div class="el prev" onclick="next3()">'+
        '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
-    '<div class="el title">'+
-        '<p>Avslutning</p>'+
-    '</div>'+
-    '<div id ="outroMain">'+
-        '<p class="sub"> Utvalgt statistikk 1:</p>'+ 
-        '<p class="sub"> Utvalgt statistikk 2:</p>'+
-        '<br><br><p id="outroBottom">Poignant avsluning. </p>'+
+    '<div class="super" id="outro">'+
+        '<div class="el title">'+
+            '<p>Avslutning</p>'+
+        '</div>'+
+        '<div id ="outroMain">'+
+            '<p class="sub"> Utvalgt statistikk 1:</p>'+ 
+            '<p class="sub"> Utvalgt statistikk 2:</p>'+
+            '<br><br><p id="outroBottom">Poignant avsluning. </p>'+
+        '</div>'+
     '</div>'+
     '<div class="el next" onclick="next()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
-    '</div>'+
-'</div>';
-}
+    '</div>'
+;}

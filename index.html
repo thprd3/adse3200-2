@@ -11,25 +11,28 @@
 </head>
 <body>
     <div class="prime" id="prime">
+        <div class="el prev" onclick="next4()">
+            <i class="material-icons" style="font-size:62px">forward</i>
+        </div>
         <div class="super" id="intro">
-            <div class="el prev" onclick="next4()">
-                <i class="material-icons" style="font-size:62px">forward</i>
-            </div>
             <div class="el title">
                 <p>ADSE3200 eksamen H2022</p>
             </div>
-            <div class="main">
-                <p class="sub"> Bolipriser i Oslo 2010-2020</p> 
-                <p class="sub"> Av kandidat xxyy</p> 
+            <div id="introMain">
+                <p class="sub"> Boligpriser i Oslo 2010-2020</p> 
+                <p class="sub"> 
+                    Av Simen Stenersen
+                    (s365329 / 640)
+                </p> 
                 <br><br><br><br>
                 <div class="el">
                     <p>Mellom 2010 og 2020 så boligprisene i Oslo en enorm vekst.</p>
                     <p>Hva betyr det for byens innbyggere?</p>    
                 </div>
             </div>
-            <div class="el next" onclick="next1()">
-                <i class="material-icons" style="font-size:62px">forward</i>
-            </div>
+        </div>
+        <div class="el next" onclick="next1()">
+            <i class="material-icons" style="font-size:62px">forward</i>
         </div>
     </div>
     <script src="script.js"></script>
