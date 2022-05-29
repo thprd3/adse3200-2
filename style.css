@@ -46,8 +46,7 @@
     flex-direction: column;
 }
 
-a{
-    animation: fadein 1s;
+a {
     color: var(--green)
 }
 
