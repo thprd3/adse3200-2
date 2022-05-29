@@ -142,9 +142,9 @@ yearArray = [
 
 function genIntro() {
     main.innerHTML=
-    '<div class="el prev" onclick="genOutro()">'+
+/*     '<div class="el prev" onclick="genOutro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
-    '</div>'+
+    '</div>'+ */
     '<div class="super" id="intro">'+
         '<div class="el title">'+
             '<p>ADSE3200 eksamen H2022</p>'+
@@ -160,6 +160,7 @@ function genIntro() {
     '</div>'+
     '<div class="el next" onclick="genRelative()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
+        '<p class="helpText">Klikk denne pilen for å gå videre</p>'+
     '</div>'
 ;}
 
@@ -169,10 +170,11 @@ function genRelative() {
     main.innerHTML=
     '<div class="el prev" onclick="genIntro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
+        '<p class="helpText">Klikk denne pilen for å gå tilbake</p>'+
     '</div>'+
     '<div class="super" id="relative">'+
         '<div id="relativeWrapper">'+
-            '<div class="el title" id="relativeTitle">Boligprisene drar fra lønnsveksten</div>'+
+            '<div class="el title" id="relativeTitle">Boligprisene knuste lønnsveksten</div>'+
             '<div class= "el" id="relativeMain">'+
             '<p id="relativeYear" class="el">Trykk på knappen for å se utviklingen.</p>'+
                 '<div class= "el" id="relativeLeft">'+
@@ -184,12 +186,14 @@ function genRelative() {
                     '<div class= "el" id="rr2"></div>'+
                 '</div>'+
                 '<button class="el" onclick="relative()">Klikk her</button>'+
-            '</div>'+
+                '</div>'+
+            '<div class="el green" id="relativeFinale"></div>'+
         '</div>'+
         '<div class="el next" onclick="genTimeline()">'+
             '<i class="material-icons" style="font-size:62px">forward</i>'+
         '</div>'+
-    '</div>'
+    '</div>'+
+    '<footer class="source">Kilde: SSB</footer>'
 ;}
 
 function relative() {
@@ -209,12 +213,15 @@ function relative() {
                 wideHouse = 200+(100 * houseGrowth[i]);
                 upperLeft.innerHTML = "<img src='personico.png' width = '"+wideGuy+"' height = '"+wideGuy+"'>";
                 upperRight.innerHTML = "<img src='house.png' width = '"+wideHouse+"' height = '"+wideHouse+"'>";
-                lowerLeft.innerHTML = "Medianinntekt: " +yearArray[i].Inntekt + "<br><span class='green'>Endring: +"+yearArray[i].EndringInntekt+"</span>";
-                lowerRight.innerHTML = "Kvadratmeterpris i Oslo: "+yearArray[i].KvmPris + "<br><span class='red'>Endring: +"+yearArray[i].EndringKvmPris+"</span>";
+                lowerLeft.innerHTML = "<span class='blue'> Medianinntekt: " +yearArray[i].Inntekt + "</span><br><span class='green'>Endring: +"+yearArray[i].EndringInntekt+"</span>";
+                lowerRight.innerHTML = "<span class='blue'> Kvadratmeterpris i Oslo: "+yearArray[i].KvmPris + "</span><br><span class='red'>Endring: +"+yearArray[i].EndringKvmPris+"</span>";
                 relativeYear.innerHTML = yearArray[i].Navn;
             }, 500 * i);
         }(i));
     }
+    setTimeout(function(){
+        document.getElementById("relativeFinale").innerHTML = "Kvadratemeter prisen i Oslo økte nesten 8 ganger<br> så mye som lønningene i denne perioden."
+    },5000);
 }
 
 /* ----------- Vis 2: Timeline ------------- */
@@ -241,7 +248,8 @@ function genTimeline() {
     '</div>'+
     '<div class="el next" onclick="genNurse()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
-    '</div>'
+    '</div>'+
+    '<footer class="source">Kilde: SSB</footer>'
     ;
 
     constructSpans();
@@ -350,7 +358,7 @@ function genNurse() {
     '<div class="el next" onclick="genOutro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
-    '<footer class="source">Kilde: https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021</footer>'
+    '<footer class="source">Kilde: <a href ="https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021">Eiendom Norge</a></footer>'
     ;
 
     document.getElementById("nurseInput").addEventListener("change", function() {
@@ -477,4 +485,5 @@ function genOutro() {
     '<div class="el next" onclick="genIntro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'
+    
 ;}
