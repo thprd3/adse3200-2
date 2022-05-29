@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    next();
+    genIntro();
 });
 
 const main = document.getElementById("prime");
@@ -140,9 +140,9 @@ yearArray = [
     }
 ]
 
-function next() {
+function genIntro() {
     main.innerHTML=
-    '<div class="el prev" onclick="next4()">'+
+    '<div class="el prev" onclick="genOutro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
     '<div class="super" id="intro">'+
@@ -158,16 +158,16 @@ function next() {
             '</div>'+
         '</div>'+
     '</div>'+
-    '<div class="el next" onclick="next1()">'+
+    '<div class="el next" onclick="genRelative()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'
 ;}
 
 /* ----- relative ----- */
 
-function next1() {
+function genRelative() {
     main.innerHTML=
-    '<div class="el prev" onclick="next()">'+
+    '<div class="el prev" onclick="genIntro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
     '<div class="super" id="relative">'+
@@ -186,7 +186,7 @@ function next1() {
                 '<button class="el" onclick="relative()">Klikk her</button>'+
             '</div>'+
         '</div>'+
-        '<div class="el next" onclick="next2()">'+
+        '<div class="el next" onclick="genTimeline()">'+
             '<i class="material-icons" style="font-size:62px">forward</i>'+
         '</div>'+
     '</div>'
@@ -219,9 +219,9 @@ function relative() {
 
 /* ----------- Vis 2: Timeline ------------- */
 
-function next2() {
+function genTimeline() {
     main.innerHTML=
-    '<div class="el prev" onclick="next1()">'+
+    '<div class="el prev" onclick="genRelative()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
     '<div class="super" id="timeline">'+
@@ -239,7 +239,7 @@ function next2() {
 
         '</div>'+
     '</div>'+
-    '<div class="el next" onclick="next3()">'+
+    '<div class="el next" onclick="genNurse()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'
     ;
@@ -328,9 +328,9 @@ function chart() {
 
 /* ---------- nurse ------- */
 
-function next3() {
+function genNurse() {
     main.innerHTML=
-    '<div class="el prev" onclick="next2()">'+
+    '<div class="el prev" onclick="genTimeline()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
     '<div class="super" id="nurse">'+
@@ -347,7 +347,7 @@ function next3() {
             '</div>'+
         '</div>'+
     '</div>'+
-    '<div class="el next" onclick="next4()">'+
+    '<div class="el next" onclick="genOutro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
     '<footer class="source">Kilde: https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021</footer>'
@@ -426,7 +426,6 @@ function generateGrid(guess) {
 }
 
 function nurseTruth () {
-    //on click to continue
     let div = document.getElementById("nurseVis");
 
     div.innerHTML = "";
@@ -458,9 +457,9 @@ function nurseTruth () {
 
 /* ---------- Outro ---------*/
 
-function next4() {
+function genOutro() {
     main.innerHTML=
-    '<div class="el prev" onclick="next3()">'+
+    '<div class="el prev" onclick="genNurse()">'+
        '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'+
     '<div class="super" id="outro">'+
@@ -475,7 +474,7 @@ function next4() {
         '</div>'+
         '<p id="outroBottom" class="el">Se rapporten for kildeliste. </p>'+
     '</div>'+
-    '<div class="el next" onclick="next()">'+
+    '<div class="el next" onclick="genIntro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+
     '</div>'
 ;}
