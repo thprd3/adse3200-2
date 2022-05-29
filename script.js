@@ -147,14 +147,14 @@ function genIntro() {
     '</div>'+ */
     '<div class="super" id="intro">'+
         '<div class="el title">'+
-            '<p>ADSE3200 eksamen H2022</p>'+
+            '<p>ADSE3200 eksamen V22</p>'+
+            '<p class="sub el green"> Tema: Boligpriser i Oslo, 2010-2020</p><br><br>'+
         '</div>'+
         '<div id ="introMain">'+
-            '<p id="sub" class="el"> Kandidatnummer 640</p>'+
-            '<br><p class="sub el"> Boligpriser i Oslo 2010-2020</p><br><br>'+
+            '<p id="sub" class="el"> Kandidatnummer: 640</p>'+
             '<div class="el">'+
-                '<p>Mellom 2010 og 2020 så boligprisene i Oslo en enorm vekst.</p>'+
-                '<p>Hva betyr det for byens innbyggere?</p>'+
+                '<p>Mellom 2010 og 2020 opplevde boligprisene i Oslo en enorm vekst.</p>'+
+                '<p class="red">Hva betyr det for byens innbyggere?</p>'+
             '</div>'+
         '</div>'+
     '</div>'+
@@ -174,7 +174,7 @@ function genRelative() {
     '</div>'+
     '<div class="super" id="relative">'+
         '<div id="relativeWrapper">'+
-            '<div class="el title" id="relativeTitle">Boligprisene knuste lønnsveksten</div>'+
+            '<div class="el title" id="relativeTitle">Boligprisveksten knuste lønnsveksten</div>'+
             '<div class= "el" id="relativeMain">'+
             '<p id="relativeYear" class="el">Trykk på knappen for å se utviklingen.</p>'+
                 '<div class= "el" id="relativeLeft">'+
@@ -292,7 +292,7 @@ function genTimeline() {
         options: {
             scales: {
                 x:{
-                    display: false //this will remove only the label
+                    display: false
                 }
             }
         }
@@ -302,7 +302,6 @@ function genTimeline() {
     ctx.canvas.parentNode.style.width = "800px";
 
     const myChart = new Chart(ctx,
-        //document.getElementById("timelineGraph"),
         config
     );
 }
@@ -346,11 +345,11 @@ function genNurse() {
         '<div id="nurseWrapper">'+
             '<div class="el nurse" id="nurseVis">'+
                 '<div class="el sliding-background"></div>'+
-                '<p class ="white"> I 2010 kunne en typisk sykepleier kjøpe 24.5% av alle boliger i Oslo. </p>'+
-                '<p class="white"> Hva tror du indeksen var i 2020? </p>'+
+                '<p class ="blue"> I 2010 kunne en typisk sykepleier kjøpe 24.5% av alle boliger i Oslo. </p>'+
+                '<p class="blue"> Hva tror du indeksen var i 2020? </p>'+
                 '<input type="range" id="nurseInput" value="25" min="1" max="100"'+
                 '<span id="rangeOutput"></span>'+
-                '<br><p id="help" class ="white">25%</p>'+
+                '<br><p id="help" class ="blue">25%</p>'+
                 '<button class="el" onclick="nurseGuess()">Gjett</button>'+
             '</div>'+
         '</div>'+
@@ -361,7 +360,7 @@ function genNurse() {
     '<footer class="source">Kilde: <a href ="https://eiendomnorge.no/aktuelt/blogg/sykepleierindeksen-h1-2021">Eiendom Norge</a></footer>'
     ;
 
-    document.getElementById("nurseInput").addEventListener("change", function() {
+    document.getElementById("nurseInput").addEventListener("input", function() {
         document.getElementById("help").innerHTML = document.getElementById("nurseInput").value+"%";
         console.log(this.value);
     });
@@ -369,30 +368,27 @@ function genNurse() {
 
 const n2020 = 1.3;
 let guess;
-let houseString = "<td><img src = 'house.png' alt = 'house'></td>";
+let houseString = "<td class='house'><img src = 'house.png' alt = 'house'></td>";
 
 function nurseGuess () {
     let nurseInputEl = document.getElementById("nurseInput");
-    let nurseOutputEl = document.getElementById("nurseVis");
 
     guess = Number(nurseInputEl.value); 
-    let outputString = '<div id ="nurseOutput"><p>Du gjettet '+ guess + '%.</p></div>';
-    nurseOutputEl.innerHTML += outputString;
     generateGrid(guess);
     document.getElementById("nurseTitle").remove();
 }
 
 function generateGrid(guess) {
-    document.getElementById("nurseVis").style.backgroundColor = "#5f4bde00";
     let output = "<table><tr>";
     let trCount = 0;
     let max = 100;
     let remainder = max - guess;
     let male = false;
     let div = document.getElementById("nurseVis");
+    div.style.backgroundColor = "transparent";
     
-    let nursehouseStringMale = "<td class = 'nursehouse'><img src = 'nursehouseM.png' alt = 'nurseHouseM'></td>";
-    let nursehouseStringFemale = "<td class= 'nursehouse'><img src = 'nursehouseF.png' alt = 'nurseHouseF'></td>";
+    let nursehouseStringMale = "<td class = 'nursehouse'><img src = 'nursehouseM2.png' alt = 'nurseHouseM'></td>";
+    let nursehouseStringFemale = "<td class= 'nursehouse'><img src = 'nursehouseF2.png' alt = 'nurseHouseF'></td>";
 
     for (let i = 0; i < guess; i++) {
         if (male === true) {
@@ -425,7 +421,7 @@ function generateGrid(guess) {
 
     div.innerHTML = output;
 
-    let outputString = '<div id ="nurseOutput" class="el"><p>Du gjettet '+ guess + '%.</p></div>';
+    let outputString = '<div id ="nurseOutput" class="el"><p>Du gjettet <span class= "green">'+ guess + '%</span>.</p></div>';
     div.innerHTML += outputString;
 
     div.innerHTML += "<button onclick='nurseTruth()'>Se svaret</button>";
@@ -439,7 +435,7 @@ function nurseTruth () {
     div.innerHTML = "";
     let trCount = 1;
 
-    let output = "<table><tr><td class = 'nursehouse2'><img src = 'nursehouseF.png' alt = 'nurseHouseF'></td>";
+    let output = "<table><tr><td class = 'nursehouse2'><img src = 'nursehouseF2.png' alt = 'nurseHouseF'></td>";
 
     for (let i = 0; i < 99; i++){
         output+= houseString;
@@ -458,8 +454,8 @@ function nurseTruth () {
     numbern2020 = Number(n2020);
     miss = numberGuess - numbern2020;
     
-    div.innerHTML += "<div id ='nurseOutput2' class='el'><p>I 2020 var sykepleierindeksen bare <span class='red'>" + n2020 + "%.</span> Du bommet med "+ miss + " prosentpoeng.</p>"+
-    "<p class='fadein'>Hva blir den i 2030?</p></div>";
+    div.innerHTML += "<div id ='nurseOutput2' class='el'><p>I 2020 var sykepleierindeksen bare <span class='red'>" + n2020 + "%.</span> Du bommet med "+ miss + " prosentpoeng.</p>";
+/*     "<p class='fadein'>Sykepleiere tjener bedre enn</p></div>"; */
 
 }
 
@@ -472,15 +468,14 @@ function genOutro() {
     '</div>'+
     '<div class="super" id="outro">'+
         '<div class="el title">'+
-            '<p>Avslutning</p>'+
+            '<p>Konklusjon</p>'+
         '</div>'+
         '<div id ="outroMain">'+
             '<p> Fra 2010 til 2020...</p>'+ 
-            '<p class="sub"> ... Økte boligprisene i Oslo 79.5 prosentpoeng mer enn median inntekt</p>'+
-            '<p class="sub"> ... Økte Oslos boligpriser 32 prosentpoeng mer enn resten av landet.</p>'+
-            '<p class="sub"> ... Ble Oslos boliger utilgjengelige for dyktige fagfolk vi sårt trenger.</p>'+
+            '<p class="sub"> ... Økte boligprisene i Oslo <span class="red">80 prosent </span> mer enn median inntekt gjorde i samme periode.</p>'+
+            '<p class="sub"> ... Økte boligprisene i Oslo <span class="red">32 prosentpoeng </span> mer enn i resten av landet.</p>'+
+            '<p class="sub"> ... Ble kanskje Oslos boliger utilgjengelige for gjennomsnittspersonen.</p>'+
         '</div>'+
-        '<p id="outroBottom" class="el">Se rapporten for kildeliste. </p>'+
     '</div>'+
     '<div class="el next" onclick="genIntro()">'+
         '<i class="material-icons" style="font-size:62px">forward</i>'+

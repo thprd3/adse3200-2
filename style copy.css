@@ -5,6 +5,7 @@
     font-family: 'lato', 'Verdana';
     user-select: none;
     text-align: center;
+    max-height: 100%;
     overflow: hidden;
     
     --blue: #0d4fa6;
@@ -27,10 +28,6 @@
     color: var(--blue)
 }
 
-.white {
-    color: var(--white);
-}
-
 
 /* ------------------- General -------------------- */
 
@@ -44,6 +41,7 @@
     height: 100%;
     width: 100%;
     flex-direction: column;
+    animation: fadein 1s;
 }
 
 a{
@@ -172,6 +170,7 @@ footer {
     flex:1;
     position: absolute;
     top: 80vh;
+    left:3vw;
     animation: pulse 4s;
     background-color: var(--blue);
     border-radius: 28px;
@@ -216,13 +215,6 @@ footer {
 
 table {
     background-color: var(--white);
-    position: absolute;
-    top: -10vh;
-    left: 6vw;
-    font-size: 0.5rem;
-    animation: fadein 2s;
-    table-layout: auto;
-    background-color: var(--blue);
 }
 
 #nurseOutput2 {
@@ -258,6 +250,17 @@ td img {
     height: 100%;
 }
 
+table {
+    position: absolute;
+    top: -10vh;
+    margin:auto;
+    font-size: 0.5rem;
+    animation: fadein 2s;
+    table-layout: auto;
+    background-color: var(--blue);
+    width: 50%;
+}
+
 .nursehouse img{
     background-color: var(--green);
 }
@@ -268,6 +271,10 @@ td img {
 
 .house, .nursehouse, .nursehouse2 {
     box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 0.26);
+}
+
+.white {
+    color: var(--blue);
 }
 
 .nurse button {
