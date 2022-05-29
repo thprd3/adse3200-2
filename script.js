@@ -150,8 +150,8 @@ function next() {
             '<p>ADSE3200 eksamen H2022</p>'+
         '</div>'+
         '<div id ="introMain">'+
-            '<p class="sub"> Boligpriser i Oslo 2010-2020</p><br><br>'+
-            '<p class="sub"> Av Simen Stenersen<br>(s365329 / 640)</p>'+
+            '<p id="sub" class="el"> Kandidatnummer 640</p>'+
+            '<br><p class="sub el"> Boligpriser i Oslo 2010-2020</p><br><br>'+
             '<div class="el">'+
                 '<p>Mellom 2010 og 2020 så boligprisene i Oslo en enorm vekst.</p>'+
                 '<p>Hva betyr det for byens innbyggere?</p>'+
@@ -172,7 +172,7 @@ function next1() {
     '</div>'+
     '<div class="super" id="relative">'+
         '<div id="relativeWrapper">'+
-            '<div class="el title">Boligprisene drar fra lønnsveksten</div>'+
+            '<div class="el title" id="relativeTitle">Boligprisene drar fra lønnsveksten</div>'+
             '<div class= "el" id="relativeMain">'+
             '<p id="relativeYear" class="el">Trykk på knappen for å se utviklingen.</p>'+
                 '<div class= "el" id="relativeLeft">'+
@@ -183,7 +183,7 @@ function next1() {
                     '<div class= "el" id="rr1"><img src="house.png" width="300px" height="300px"></div>'+
                     '<div class= "el" id="rr2"></div>'+
                 '</div>'+
-                '<button class="el" onclick="relative()">Klikk her for å se utviklingen</button>'+
+                '<button class="el" onclick="relative()">Klikk her</button>'+
             '</div>'+
         '</div>'+
         '<div class="el next" onclick="next2()">'+
@@ -212,7 +212,7 @@ function relative() {
                 lowerLeft.innerHTML = "Medianinntekt: " +yearArray[i].Inntekt + "<br><span class='green'>Endring: +"+yearArray[i].EndringInntekt+"</span>";
                 lowerRight.innerHTML = "Kvadratmeterpris i Oslo: "+yearArray[i].KvmPris + "<br><span class='red'>Endring: +"+yearArray[i].EndringKvmPris+"</span>";
                 relativeYear.innerHTML = yearArray[i].Navn;
-            }, 70 * i);
+            }, 500 * i);
         }(i));
     }
 }
@@ -227,13 +227,13 @@ function next2() {
     '<div class="super" id="timeline">'+
 
         '<div id="timelineWrapper">'+
-            '<div class="el title">Boligprisvekst Oslo 2010-2020</div>'+
+            '<div class="el title" id="timelineTitle">Boligprisvekst Oslo 2010-2020</div>'+
             '<div id="timelineMain">'+
-                '<div id="selectedYear"><span id="defaultText" class="el">Trykk på tidslinjen nederst for mer detaljert informasjon</span></div>'+
+                '<div id="selectedYear"><span id="defaultText" class="el">Trykk på årstallene for mer detaljert informasjon.</span></div>'+
                 '<div id="change"></div>'+
             '</div>'+
             '<div id="graphWrapper">'+
-                '<canvas id= "timelineGraph" width="3" height="1"></canvas>'+
+                '<canvas id= "timelineGraph" width="3" height="1" class="el"></canvas>'+
                 '<div class="el vis" id="timelineVis"></div>'+
             '</div>'+
 
@@ -256,7 +256,7 @@ function next2() {
               data: [100, 110.9, 118.65, 127.98, 124.82, 139.74,
             152.8, 184.94, 175.9, 184.07, 189.67],
               fill: false,
-              borderColor: 'rgb(75, 192, 192)',
+              borderColor: '#0d4fa6',
               tension: 0.1
             },
             {
@@ -264,7 +264,7 @@ function next2() {
               data: [100, 108.45, 115.28, 122.52, 122.92, 131.77,
             137.8, 151.74, 150.13, 154.69, 157.64],
               fill: false,
-              borderColor: 'rgb(20, 120, 33)',
+              borderColor: '#00ab77',
               tension: 0.1
             },
             {
@@ -272,7 +272,7 @@ function next2() {
               data: [100, 103.54, 106.49, 108.55, 109.57, 110.05,
             107.63, 108.33, 108.37, 109.29, 109.19],
               fill: false,
-              borderColor: 'rgb(60, 10, 43)',
+              borderColor: '#fd4545',
               tension: 0.1
             }
           ]
@@ -451,8 +451,8 @@ function nurseTruth () {
     numbern2020 = Number(n2020);
     miss = numberGuess - numbern2020;
     
-    div.innerHTML += "<div id ='nurseOutput2' class='el'><p>I 2020 var sykepleierindeksen " + n2020 + "%. Du bommet med "+ miss + " prosentpoeng.</p>"+
-    "<p>Hva blir den i 2030?</p></div>";
+    div.innerHTML += "<div id ='nurseOutput2' class='el'><p>I 2020 var sykepleierindeksen bare <span class='red'>" + n2020 + "%.</span> Du bommet med "+ miss + " prosentpoeng.</p>"+
+    "<p class='fadein'>Hva blir den i 2030?</p></div>";
 
 }
 

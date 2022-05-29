@@ -1,13 +1,30 @@
 :root{
     box-sizing: border-box;
-    font-family: 'Verdana', Arial, sans-serif;
+    font-family: 'lato', 'Verdana';
     user-select: none;
     text-align: center;
     max-height: 100%;
     overflow: hidden;
+    
+    --blue: #0d4fa6;
+    --green: #00ab77;
+    --white: #ffffff;
+    --red: #fd4545;
+
+    color: var(--white)
 }
 
 /* ------------------- general -------------------- */
+
+#outro {
+    background-color: gray;
+    height: 100vh;
+}
+
+#intro {
+    background-color: #3866A3;
+    height: 100vh;
+}
 
 .prime {
     width: 100%;
@@ -31,7 +48,9 @@
 .next {
     position:absolute;
     top: 90vh;
+    z-index: 2;
     animation: none !important;
+    color: var(--white)
 }
 footer {
     position: absolute;
@@ -43,6 +62,8 @@ footer {
     position: absolute;
     top: 5vh;
     animation: none !important;
+    z-index: 2;
+    color: var(--white)
 }
 .prev i {
     transform: rotateY(180deg);
@@ -52,6 +73,7 @@ footer {
     font-size: 3rem;
     position: absolute;
     top: 12vh;
+    color: var(--white)
 }
 
 #introMain, #outroMain {
@@ -94,23 +116,33 @@ footer {
 
 /* timeline */
 
+#timeline {
+    background-color: var(--blue);
+    height: 100vh;
+}
+
 #timelineMain { /* contains selectedyear and change */
     display:flex;
     width:100%;
     position: absolute;
     top: 23vh;
+    background-color: var(--white);
+    height:62vh;
 }
 
 #selectedYear, #change{
     font-size: 1.5rem;
     flex: 1;
-    animation: fadein 1s;
+    animation: fadein 0.5s;
+    padding-top: 3vh;
+    color: var(--blue)
 }
 
 #defaultText {
     position: absolute;
-    color:gold;
+    color: var(--green);
     left: 0vw;
+    padding-top: 5vh;
 }
 
 #timelineGraph { 
@@ -118,7 +150,7 @@ footer {
     position: absolute;
     top: 45vh;
     cursor: pointer;
-    left:25vw;
+    left: 30%;
 }
 
 #timelineVis { /* contains yearspan */
@@ -127,7 +159,10 @@ footer {
     top: 80vh;
     left:3vw;
     animation: pulse 4s;
+    background-color: var(--blue);
+    border-radius: 28px;
 }
+
 .yearSpan {
     margin-right: 20px;
     flex: 1;
@@ -145,25 +180,35 @@ footer {
 .bigYear {
     font-size: 3rem !important;
     margin-bottom: 10px;
+    color: var(--blue)
 }
 
 #yellowYear {
-    color: gold;
+    color: var(--blue);
 }
 
 .red {
-    color:red;
+    color: var(--red);
 }
 .green {
-    color:green;
+    color: var(--green);
 }
 
 /* ---------- nurse ----------  */
 
 #nurseWrapper {
     display: flex;
-    height: 90vh;
+    height: 100vh;
     align-items: center;
+    background-color: var(--blue);
+}
+
+#nurseTitle {
+    top: 13vh;
+}
+
+table {
+    background-color: var(--white);
 }
 
 @keyframes slide {
@@ -187,41 +232,35 @@ footer {
     }
 }
 
-.sliding-background {
-    background: url("nursebg.png") repeat-x;
-    height: 100%;
-    width: 6339px;
-    /* animation: slide 5s linear infinite; */
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-}
-
-#nurseOutput {
-    position: absolute;
-    top: 40vh;
-}
-
 #nurseOutput2 {
     position: absolute;
-    top: 44vh;
-    font-size: 1.5rem;
 }
 
-#nurseOutput, #nurseOutput2 p {
-    animation: fadein 8s;
+#nurseOutput, #nurseOutput2 {
+    position: relative;
+    animation: fadein 4s;
+    font-size: 2rem;
+    top: 35vh;
+}
+
+.fadein {
+    animation: fadein 12s;
 }
 
 #nurseVis {
     position: absolute;
     top:30vh;
-    background-color: #529dffb7;
+    background-color: var(--white);
     padding-bottom:50px;
 }
 
 .white {
-    color: rgba(249, 249, 249, 0.964);
+    color: var(--blue);
+}
+
+#help {
+    color: var(--red);
+    font-size: 3rem;
 }
 
 table{
@@ -230,20 +269,25 @@ table{
 }
 
 .nurse button {
-    color: #14396A ;
-    font-size: 25px;
-    text-shadow: 0px 0px 0px #5F4BDE;
-    box-shadow: 1px 1px 1px #BEE2F9;
+    color: var(--white) ;
+    box-shadow: 2px 2px 2px var(--white);
     padding: 20px 20px;
     border-radius: 10px;
-    border: 2px solid #3866A3;
-    background: #63B8EE;
-    background: linear-gradient(to top, #63B8EE, #468CCF);
+    border: 2px solid var(--blue);
+    background: var(--red);
+/*     background: linear-gradient(to top, #63B8EE, #468CCF); */
     display: block;
     width:10%;
     position: absolute;
     left: 45vw;
     top: 50vh;
+    animation: pulse 2s;
+    font-size: 1.25rem;
+}
+
+.nurse button:hover {
+    background: red;
+    cursor: pointer;
 }
 
 #help {
@@ -288,24 +332,14 @@ input[type=range] {
     background-color: #ffffff8c;
   }
   input[type=range]::-webkit-slider-thumb {
-    box-shadow: 1px 1px 1px #000000;
-    border: 1px solid #000000;
     height: 40px;
     width: 40px;
     border-radius: 50px;
-    background: #14396A;
+    background: var(--red);
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -16px;
   }
-
-.nurse button:hover {
-color: #14396A !important;
-background: #468CCF;
-background: linear-gradient(to top, #468CCF, #63B8EE);
-cursor: pointer;
-}
-
 
 .nursehouse2 {
     border: 2px solid red;
@@ -314,10 +348,16 @@ cursor: pointer;
 }
 
 /* ---- relative ----- */
+#relative {
+    background-color:darkcyan;
+    height:100vh;
+}
+
 #relativeMain {
     display:flex;
     position: absolute;
     top: 40vh;
+    background-color: white;
 }
 
 #relativeLeft {
@@ -332,19 +372,43 @@ cursor: pointer;
     position: absolute;
     top: -20vh;
     font-size: 2rem;
+    color: white;
+}
+
+#relativeTitle {
+    color:white;
+}
+
+#relativeMain button {
+    position: absolute;
+    top: 15vh;
+    left: 45vw;
+    width:10%;
+    border: none;
+    padding: 20px;
+
+    background-color: rgb(1, 107, 107);
+	border-radius:28px;
+	border:1px solid #4b8f29;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:17px;
+	text-shadow:0px 1px 0px #5b8a3c;
+
+    z-index: 3;
+    animation: pulse 2s;
+
+}
+
+#relativeMain button:hover {
+	background-color:rgb(3, 139, 139);
 }
 
 /* ---- outro ----- */
 #outroBottom {
     position: absolute;
     top: 20vh;
-}
-
-#relativeMain button {
-    position: absolute;
-    top: 30vh;
-    left: 45vw;
-    width:10%;
 }
 
 #outroBottom {
@@ -355,4 +419,9 @@ cursor: pointer;
 
 #outroMain p {
     font-size: 2rem;
+}
+
+#sub {
+    top:10vh;
+    position: absolute;
 }
