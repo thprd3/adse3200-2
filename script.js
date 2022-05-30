@@ -152,6 +152,7 @@ function genIntro() {
         '</div>'+
         '<div id ="introMain">'+
             '<p id="sub" class="el"> Kandidatnummer: 640</p>'+
+            '<p id="sub2" class="el"> Merk: Denne siden kjører best på Chrome i høy oppløsning.</p>'+
             '<div class="el">'+
                 '<p>Mellom 2010 og 2020 opplevde boligprisene i Oslo en enorm vekst.</p>'+
                 '<p class="red">Hva betyr det for byens innbyggere?</p>'+

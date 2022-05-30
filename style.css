@@ -61,7 +61,7 @@ a {
     top: 90vh;
     z-index: 2;
     animation: none !important;
-    color: var(--white)
+    color: var(--white);
 }
 
 .prev {
@@ -69,8 +69,19 @@ a {
     top: 5vh;
     animation: none !important;
     z-index: 2;
-    color: var(--white)
+    color: var(--white);
 }
+
+.prev i:hover {
+    cursor: pointer;
+    transform: scale(1.2) rotateY(180deg);
+}
+
+.next i:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
 .prev i {
     transform: rotateY(180deg);
 }
@@ -265,9 +276,6 @@ td img {
     background-color: var(--red);
 }
 
-.house, .nursehouse, .nursehouse2 {
-}
-
 .nurse button {
     color: var(--white) ;
     box-shadow: 2px 2px 2px var(--white);
@@ -406,6 +414,13 @@ input[type=range] {
 #sub {
     top:10vh;
     position: absolute;
+}
+
+#sub2 {
+    position: absolute;
+    top: 18vh;
+    font-style: italic;
+    font-size: 1rem;
 }
 
 #introMain, #outroMain {
