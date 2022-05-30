@@ -148,7 +148,7 @@ function genIntro() {
     '<div class="super" id="intro">'+
         '<div class="el title">'+
             '<p>ADSE3200 eksamen V22</p>'+
-            '<p class="sub el cyan"> Tema: Boligpriser i Oslo, 2010-2020</p><br><br>'+
+            '<p class="sub el green"> Tema: Boligpriser i Oslo, 2010-2020</p><br><br>'+
         '</div>'+
         '<div id ="introMain">'+
             '<p id="sub" class="el"> Kandidatnummer: 640</p>'+
