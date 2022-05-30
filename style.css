@@ -266,7 +266,6 @@ td img {
 }
 
 .house, .nursehouse, .nursehouse2 {
-    box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 0.26);
 }
 
 .nurse button {
@@ -385,7 +384,7 @@ input[type=range] {
 }
 
 #intro {
-    background-color: var(--blue);
+    background-color: darkcyan;
     height: 100vh;
 }
 

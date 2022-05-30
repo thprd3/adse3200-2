@@ -148,7 +148,7 @@ function genIntro() {
     '<div class="super" id="intro">'+
         '<div class="el title">'+
             '<p>ADSE3200 eksamen V22</p>'+
-            '<p class="sub el green"> Tema: Boligpriser i Oslo, 2010-2020</p><br><br>'+
+            '<p class="sub el blue"> Tema: Boligpriser i Oslo, 2010-2020</p><br><br>'+
         '</div>'+
         '<div id ="introMain">'+
             '<p id="sub" class="el"> Kandidatnummer: 640</p>'+
@@ -182,7 +182,7 @@ function genRelative() {
                     '<div class= "el" id="rl2"></div>'+
                 '</div>'+
                 '<div class= "el" id="relativeRight">'+
-                    '<div class= "el" id="rr1"><img src="house.png" width="300px" height="300px"></div>'+
+                    '<div class= "el" id="rr1"><img src="house2.png" width="300px" height="300px"></div>'+
                     '<div class= "el" id="rr2"></div>'+
                 '</div>'+
                 '<button class="el" onclick="relative()">Klikk her</button>'+
@@ -212,7 +212,7 @@ function relative() {
                 wideGuy = 200+(100 * guyGrowth[i]);
                 wideHouse = 200+(100 * houseGrowth[i]);
                 upperLeft.innerHTML = "<img src='personico.png' width = '"+wideGuy+"' height = '"+wideGuy+"'>";
-                upperRight.innerHTML = "<img src='house.png' width = '"+wideHouse+"' height = '"+wideHouse+"'>";
+                upperRight.innerHTML = "<img src='house2.png' width = '"+wideHouse+"' height = '"+wideHouse+"'>";
                 lowerLeft.innerHTML = "<span class='blue'> Medianinntekt: " +yearArray[i].Inntekt + "</span><br><span class='green'>Endring: +"+yearArray[i].EndringInntekt+"</span>";
                 lowerRight.innerHTML = "<span class='blue'> Kvadratmeterpris i Oslo: "+yearArray[i].KvmPris + "</span><br><span class='red'>Endring: +"+yearArray[i].EndringKvmPris+"</span>";
                 relativeYear.innerHTML = yearArray[i].Navn;
@@ -368,7 +368,7 @@ function genNurse() {
 
 const n2020 = 1.3;
 let guess;
-let houseString = "<td class='house'><img src = 'house.png' alt = 'house'></td>";
+let houseString = "<td class='house'><img src = 'house2.png' alt = 'house'></td>";
 
 function nurseGuess () {
     let nurseInputEl = document.getElementById("nurseInput");

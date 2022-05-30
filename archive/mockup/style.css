@@ -1,8 +1,15 @@
 :root{
     box-sizing: border-box;
-    background-color: blue;
+    background-color: var(--white);
     --visHeight: 600px;
     --visWidth: 1200px;
+
+    --blue: #0d4fa6;
+    --green: #00ab77;
+    --white: #ffffff;
+    --red: #fd4545;
+
+    color: var(--white);
 }
 
 body{
@@ -20,7 +27,7 @@ body{
 /* --------- Timeline starts here ---------- */
 
 #timelineFullWrapper{
-    background: aquamarine;
+    background: var(--blue);
     height: var(--visHeight);
     width: var(--visWidth);
     padding-top: 20px;
@@ -80,11 +87,10 @@ body{
 
 
 #p2hFullWrapper {
-    background-color: rgb(115, 175, 103);
+    background-color: var(--green);
     height: var(--visHeight);
     width: var(--visWidth);
     padding-top: 20px;
-    color:rgb(1, 137, 255);
     margin:auto;
     justify-content: center;
     align-items: center;
@@ -110,11 +116,10 @@ body{
 
 
 #raceFullWrapper {
-    background-color: rgb(175, 103, 113);
+    background-color: var(--blue);
     height: var(--visHeight);
     width: var(--visWidth);
     padding-top: 20px;
-    color:rgb(1, 137, 255);
     margin:auto;
     justify-content: center;
     align-items: center;
@@ -140,11 +145,10 @@ body{
 
 
 #nurseFullWrapper {
-    background-color: wheat;
+    background-color: var(--green);
     height: var(--visHeight);
     width: var(--visWidth);
     padding-top: 20px;
-    color:rgb(1, 137, 255);
     margin:auto;
     justify-content: center;
     align-items: center;
@@ -170,11 +174,11 @@ body{
 
 
 #finaleFullWrapper {
-    background: linear-gradient(45deg, red, blue, green, white);
+/*     background: linear-gradient(45deg, red, blue, green, white);*/    
+    background-color: var(--red);
     height: var(--visHeight);
     width: var(--visWidth);
     padding-top: 20px;
-    color:rgb(1, 137, 255);
     margin:auto;
     justify-content: center;
     align-items: center;
