@@ -11,6 +11,7 @@
     --green: #00ab77;
     --white: #ffffff;
     --red: #fd4545;
+    --cyan: #027273;
 
     color: var(--white) /* Text is white unless overwritten */
 }
@@ -29,6 +30,10 @@
 
 .white {
     color: var(--white);
+}
+
+.cyan {
+    color: var(--cyan)
 }
 
 
@@ -282,7 +287,7 @@ td img {
     padding: 20px 20px;
     border-radius: 10px;
     border: 2px solid var(--blue);
-    background: var(--red);
+    background: var(--green);
 /*     background: linear-gradient(to top, #63B8EE, #468CCF); */
     display: block;
     width:10%;
@@ -294,13 +299,13 @@ td img {
 }
 
 .nurse button:hover {
-    background: red;
+    background: var(--cyan);
     cursor: pointer;
 }
 
 #help {
     margin: 5px;
-    color: var(--red);
+    color: var(--green);
     font-size: 3rem;
 }
 
@@ -323,7 +328,7 @@ input[type=range] {
     height: 40px;
     width: 40px;
     border-radius: 50px;
-    background: var(--red);
+    background: var(--green);
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -16px;
@@ -333,7 +338,7 @@ input[type=range] {
 
 /* ---- relative ----- */
 #relative {
-    background-color:darkcyan;
+    background-color: var(--cyan);
     height:100vh;
 }
 
@@ -387,12 +392,12 @@ input[type=range] {
 
 /* ---- Intro and Outro ----- */
 #outro {
-    background-color: var(--blue);
+    background-color: var(--cyan);
     height: 100vh;
 }
 
 #intro {
-    background-color: darkcyan;
+    background-color: var(--blue);
     height: 100vh;
 }
 

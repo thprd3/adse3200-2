@@ -148,7 +148,7 @@ function genIntro() {
     '<div class="super" id="intro">'+
         '<div class="el title">'+
             '<p>ADSE3200 eksamen V22</p>'+
-            '<p class="sub el blue"> Tema: Boligpriser i Oslo, 2010-2020</p><br><br>'+
+            '<p class="sub el cyan"> Tema: Boligpriser i Oslo, 2010-2020</p><br><br>'+
         '</div>'+
         '<div id ="introMain">'+
             '<p id="sub" class="el"> Kandidatnummer: 640</p>'+
@@ -350,7 +350,7 @@ function genNurse() {
                 '<p class="blue"> Hva tror du indeksen var i 2020? </p>'+
                 '<input type="range" id="nurseInput" value="25" min="1" max="100"'+
                 '<span id="rangeOutput"></span>'+
-                '<br><p id="help" class ="blue">25%</p>'+
+                '<br><p id="help" class ="green">25%</p>'+
                 '<button class="el" onclick="nurseGuess()">Gjett</button>'+
             '</div>'+
         '</div>'+
