@@ -222,11 +222,11 @@ function genRelative() {
             '<div class= "el" id="relativeMain">'+
             '<p id="relativeYear" class="el">Trykk på knappen for å se utviklingen.</p>'+
                 '<div class= "el" id="relativeLeft">'+
-                    '<div class= "el" id="rl1"><img class="relIcon" src="personico.png"></div>'+
+                    '<div class= "el" id="rl1"><span id="testLeft"</span></div>'+
                     '<div class= "el" id="rl2"></div>'+
                 '</div>'+
                 '<div class= "el" id="relativeRight">'+
-                    '<div class= "el" id="rr1"><img class="relIcon" src="house2.png"></div>'+
+                    '<div class= "el" id="rr1"><span id="testright"></span></div>'+
                     '<div class= "el" id="rr2"></div>'+
                 '</div>'+
                 '<button class="el" onclick="relative()">Klikk her</button>'+
@@ -242,7 +242,7 @@ function genRelative() {
     currentPage = "relative";
 }
 
-function relative() {
+function relative() { 
     const guyGrowth = [1, 1.0354, 1.0649, 1.0855, 1.0957, 1.1005, 1.0763, 
     1.0833, 1.0837, 1.0929, 1.0919];
     const houseGrowth = [1, 1.0963, 1.1686, 1.1951, 1.2138, 1.3320,
@@ -257,12 +257,12 @@ function relative() {
             setTimeout(function(){
                 wideGuy = 200 * guyGrowth[i];
                 wideHouse = 200 * houseGrowth[i];
-                upperLeft.style.width = wideGuy+"px"; upperLeft.style.height = wideGuy +"px";
-                upperRight.style.width = wideHouse+"px"; upperRight.style.height = wideGuy +"px";                
+                upperLeft.style.width = wideGuy+"px";
+                upperRight.style.width = wideHouse+"px";
                 lowerLeft.innerHTML = "<span class='blue'> Medianinntekt: " +yearArray[i].Inntekt + "</span><br><span class='green'>Endring: +"+yearArray[i].EndringInntekt+"</span>";
                 lowerRight.innerHTML = "<span class='blue'> Kvadratmeterpris i Oslo: "+yearArray[i].KvmPris + "</span><br><span class='red'>Endring: +"+yearArray[i].EndringKvmPris+"</span>";
                 relativeYear.innerHTML = yearArray[i].Navn;
-            }, 500 * i);
+            }, 250 * i);
         }(i));
     }
     setTimeout(function(){
