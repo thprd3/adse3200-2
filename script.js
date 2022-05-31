@@ -46,7 +46,7 @@ function arrowNav() {
     });
 }
 
-/* ----------- Class and Objects ----------- */
+/* ----------- Array and Objects ----------- */
 yearArray = [
     y2010 = {
       "Navn": 2010,
@@ -259,18 +259,21 @@ function relative() {
                 wideHouse = 200 * houseGrowth[i];
                 upperLeft.style.width = wideGuy+"px"; upperLeft.style.height = wideGuy +"px";
                 upperRight.style.width = wideHouse+"px"; upperRight.style.height = wideGuy +"px";                
-                lowerLeft.innerHTML = "<span class='blue'> Medianinntekt: " +yearArray[i].Inntekt + "</span><br><span class='green'>Endring: +"+yearArray[i].EndringInntekt+"</span>";
-                lowerRight.innerHTML = "<span class='blue'> Kvadratmeterpris i Oslo: "+yearArray[i].KvmPris + "</span><br><span class='red'>Endring: +"+yearArray[i].EndringKvmPris+"</span>";
+                lowerLeft.innerHTML = "<span class='blue'> Medianinntekt: " +yearArray[i].Inntekt + 
+                "</span><br><span class='green'>Endring: +"+yearArray[i].EndringInntekt+"</span>";
+                lowerRight.innerHTML = "<span class='blue'> Kvadratmeterpris i Oslo: "+yearArray[i].KvmPris + 
+                "</span><br><span class='red'>Endring: +"+yearArray[i].EndringKvmPris+"</span>";
                 relativeYear.innerHTML = yearArray[i].Navn;
             }, 500 * i);
         }(i));
     }
     setTimeout(function(){
-        document.getElementById("relativeFinale").innerHTML = "Kvadratmeter prisen i Oslo økte nesten 8 ganger<br> så mye som lønningene i denne perioden."
+        document.getElementById("relativeFinale").innerHTML = "Kvadratmeter prisen i Oslo økte nesten 8 ganger<br>"+
+        "så mye som lønningene i denne perioden.";
     },5000);
 }
 
-/* ----------- Vis 2: Timeline ------------- */
+/* ----------- timeline ------------- */
 
 function genTimeline() {
     main.innerHTML=
@@ -507,7 +510,6 @@ function nurseTruth () {
     miss = numberGuess - numbern2020;
     
     div.innerHTML += "<div id ='nurseOutput2' class='el'><p>I 2020 var sykepleierindeksen bare <span class='red'>" + n2020 + "%.</span> Du bommet med "+ miss + " prosentpoeng.</p>";
-/*     "<p class='fadein'>Sykepleiere tjener bedre enn</p></div>"; */
 
 }
 

@@ -369,7 +369,7 @@ input[type=range] {
 
 #relativeMain button {
     position: absolute;
-    top: 15vh;
+    top: 25vh;
     left: 45vw;
     width:10%;
     border: none;
